@@ -13,7 +13,7 @@ export default function Hero({ t, lang }) {
   };
 
   return (
-    <section id="home" className="relative min-h-[100svh] flex flex-col justify-center px-6 md:px-12 pt-24 md:pt-32 pb-24 md:pb-32 overflow-hidden">
+    <section id="home" className="relative min-h-[calc(100svh-56px)] md:min-h-[calc(100svh-64px)] mt-14 md:mt-16 flex flex-col justify-center px-6 md:px-12 py-16 md:py-24 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 noise-texture opacity-[0.035]" />
       </div>
@@ -32,7 +32,7 @@ export default function Hero({ t, lang }) {
           {/* Title */}
           <motion.h1
             variants={item}
-            className="text-[20vw] md:text-[16vw] lg:text-[14rem] font-bold leading-[0.82] tracking-[-0.04em] text-zinc-900 dark:text-zinc-50 mb-10 md:mb-14"
+            className="text-[22vw] md:text-[18vw] lg:text-[16rem] font-black leading-[0.8] tracking-[-0.04em] text-zinc-900 dark:text-zinc-50 mb-10 md:mb-14"
           >
             <span className="block">NINA</span>
             <span className="block">NARDI</span>

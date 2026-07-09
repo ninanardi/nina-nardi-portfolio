@@ -114,7 +114,7 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
               onClick={() => setOpen(!open)}
               aria-label={open ? 'Close menu' : 'Open menu'}
               aria-expanded={open}
-              className="px-4 border-l border-zinc-200 dark:border-zinc-800 font-mono uppercase tracking-[0.05em] text-base"
+              className="pl-4 border-l border-zinc-200 dark:border-zinc-800 font-mono uppercase tracking-[0.05em] text-base flex items-center justify-center"
             >
               {open ? '×' : '≡'}
             </button>
