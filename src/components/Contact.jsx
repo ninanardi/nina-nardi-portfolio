@@ -44,6 +44,9 @@ export default function Contact({ t, lang }) {
         >
           {/* Left: title */}
           <div className="lg:col-span-7">
+            <motion.span variants={item} className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
+              04 / {lang === 'pt' ? 'Contato' : 'Contact'}
+            </motion.span>
             <motion.h2 variants={item} className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.85] mb-10 whitespace-pre-line">
               {t.contact.title}
             </motion.h2>
@@ -52,7 +55,7 @@ export default function Contact({ t, lang }) {
             </motion.p>
 
             {t.contact.locationLabel && (
-              <motion.div variants={item} className="flex flex-col gap-1 text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-500">
+              <motion.div variants={item} className="flex flex-col gap-1 text-xs font-mono uppercase tracking-[0.05em] text-zinc-500">
                 <div className="flex items-center gap-3">
                   <span className="text-zinc-400">{t.contact.locationLabel}: </span>
                   <span className="text-zinc-700 dark:text-zinc-300">{t.contact.location}</span>
@@ -64,8 +67,8 @@ export default function Contact({ t, lang }) {
           {/* Right: direct links */}
           <div className="lg:col-span-5">
             <motion.div variants={item} className="flex items-baseline justify-between mb-6 pb-4 border-b border-zinc-900 dark:border-zinc-100">
-              <span className="text-[10px] font-mono uppercase tracking-[0.3em]">
-                {lang === 'pt' ? 'Contato' : 'Contact'}
+              <span className="text-xs font-mono uppercase tracking-[0.05em]">
+                {lang === 'pt' ? 'Links diretos' : 'Direct links'}
               </span>
             </motion.div>
 
@@ -77,12 +80,12 @@ export default function Contact({ t, lang }) {
                   href={l.href}
                   target={l.href.startsWith('http') ? '_blank' : undefined}
                   rel="noreferrer"
-                  className="group relative border-b border-zinc-200 dark:border-zinc-800 py-6 grid grid-cols-[1fr_auto] items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors px-2 -mx-2"
+                  className="group relative border-b border-zinc-200 dark:border-zinc-800 py-6 grid grid-cols-[1fr_auto] items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors px-2 md:px-4 -mx-2 md:-mx-4"
                 >
                   <span className="text-lg md:text-xl font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
                     {l.value}
                   </span>
-                  <span className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                  <span className="flex items-center gap-2 text-xs font-mono uppercase tracking-[0.05em] text-zinc-500 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
                     <span className="hidden md:inline">{l.action}</span>
                   </span>
                 </motion.a>

@@ -29,15 +29,20 @@ export default function About({ t, lang }) {
 
       <div className="max-w-7xl mx-auto relative">
         {/* Section title */}
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.85] mb-20 md:mb-28"
+          className="mb-16 md:mb-24"
         >
-          {t.about.title}
-        </motion.h2>
+          <span className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
+            03 / {lang === 'pt' ? 'Sobre' : 'About'}
+          </span>
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.85]">
+            {t.about.title}
+          </h2>
+        </motion.div>
 
         {/* Experience timeline */}
         <motion.div
@@ -45,9 +50,9 @@ export default function About({ t, lang }) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-50px' }}
-          className="mb-20 md:mb-28"
+          className="mb-16 md:mb-24"
         >
-          <motion.h3 variants={item} className="text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-8 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+          <motion.h3 variants={item} className="text-xs font-mono uppercase tracking-[0.05em] text-zinc-400 mb-8 pb-4 border-b border-zinc-200 dark:border-zinc-800">
             {lang === 'pt' ? 'Experiência' : 'Experience'}
           </motion.h3>
           <div className="flex flex-col">
@@ -57,14 +62,14 @@ export default function About({ t, lang }) {
                 variants={item}
                 className="border-b border-zinc-200 dark:border-zinc-800 py-8 grid md:grid-cols-[160px_1fr_auto] gap-4 md:gap-16 group hover:bg-white dark:hover:bg-zinc-900/40 transition-colors px-2 md:px-4 -mx-2 md:-mx-4"
               >
-                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em] tabular-nums pt-1 whitespace-nowrap">
+                <span className="text-xs font-mono uppercase tracking-[0.05em] text-zinc-500 tabular-nums pt-1 whitespace-nowrap">
                   {exp.year}
                 </span>
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold tracking-[-0.02em] mb-2">
                     {exp.role}
                   </h3>
-                  <p className="text-[10px] font-mono text-zinc-700 dark:text-zinc-300 uppercase tracking-[0.3em] mb-4">
+                  <p className="text-xs font-mono uppercase tracking-[0.05em] text-zinc-700 dark:text-zinc-300 mb-4">
                     {exp.company}
                   </p>
                   <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed font-light max-w-2xl text-pretty">
@@ -84,10 +89,10 @@ export default function About({ t, lang }) {
           viewport={{ once: true, margin: '-50px' }}
         >
           <motion.div variants={item} className="flex items-baseline justify-between mb-8 pb-4 border-b border-zinc-200 dark:border-zinc-800">
-            <h3 className="text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-400">
+            <h3 className="text-xs font-mono uppercase tracking-[0.05em] text-zinc-400">
               {lang === 'pt' ? 'Ferramentas' : 'Tools'}
             </h3>
-            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-400 tabular-nums">
+            <span className="text-xs font-mono uppercase tracking-[0.05em] text-zinc-400 tabular-nums">
             </span>
           </motion.div>
 

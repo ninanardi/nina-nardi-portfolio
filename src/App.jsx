@@ -24,6 +24,10 @@ export default function App() {
   }, [theme]);
 
   useEffect(() => {
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  }, [lang]);
+
+  useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 600);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -33,14 +37,18 @@ export default function App() {
 
   return (
     <div className="min-h-screen selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-900">
-<Navbar lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
+      <a href="#main" className="skip-link">
+        {lang === 'pt' ? 'Pular para o conteúdo' : 'Skip to content'}
+      </a>
+      <Navbar lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
 
-      <main className="flex flex-col">
+      <main id="main" className="flex flex-col">
         <Hero t={t} lang={lang} />
+        <div className="h-px bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
         <Projects t={t} lang={lang} />
-        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" aria-hidden="true" />
+        <div className="h-px bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
         <About t={t} lang={lang} />
-        <div className="h-px bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" aria-hidden="true" />
+        <div className="h-px bg-zinc-200 dark:bg-zinc-800" aria-hidden="true" />
         <Contact t={t} lang={lang} />
       </main>
 
@@ -53,7 +61,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={() => smoothScrollTo(0)}
-            className="fixed bottom-6 right-6 z-40 w-12 h-12 bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center"
+            className="fixed bottom-6 right-6 z-40 w-12 h-12 bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border border-zinc-900 dark:border-white shadow-lg hover:opacity-85 transition-opacity flex items-center justify-center font-mono uppercase tracking-[0.05em]"
             aria-label="Back to top"
           >
             <span className="text-lg">↑</span>

@@ -6,7 +6,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"DM Sans"', 'ui-sans-serif', 'system-ui'],
-        mono: ['"Space Mono"', 'ui-monospace', 'monospace'],
+        mono: ['"Chivo Mono"', 'ui-monospace', 'monospace'],
       },
     },
   },

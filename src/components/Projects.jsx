@@ -41,19 +41,24 @@ export default function Projects({ t, lang }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6"
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-6"
         >
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.85] whitespace-pre-line">
-            {t.projects.title}
-          </h2>
-          <p className="text-zinc-500 max-w-xs font-mono text-[10px] uppercase tracking-[0.3em] leading-relaxed whitespace-pre-line">
+          <div>
+            <span className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
+              02 / {lang === 'pt' ? 'Projetos' : 'Projects'}
+            </span>
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.85] whitespace-pre-line">
+              {t.projects.title}
+            </h2>
+          </div>
+          <p className="text-zinc-500 max-w-xs font-mono uppercase tracking-[0.05em] text-xs leading-relaxed whitespace-pre-line">
             {t.projects.subtitle}
           </p>
         </motion.div>
 
-        {/* Desktop: editorial list */}
+        {/* Desktop: editorial list (lg+ only — hover previews need a pointer) */}
         <div
-          className="hidden md:block"
+          className="hidden lg:block"
           onMouseMove={handleMouseMove}
           onMouseLeave={() => setHoveredId(null)}
         >
@@ -68,7 +73,17 @@ export default function Projects({ t, lang }) {
                 className="border-b border-zinc-200 dark:border-zinc-800"
               >
                 <div
+                  role="button"
+                  tabIndex={0}
+                  aria-haspopup="dialog"
+                  aria-label={`${project.title.replace('\n', ' ')} — ${lang === 'pt' ? 'ver detalhes' : 'view details'}`}
                   onClick={() => setSelectedId(project.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedId(project.id);
+                    }
+                  }}
                   onMouseEnter={() => setHoveredId(project.id)}
                   className="group relative cursor-pointer py-10 lg:py-12 flex items-center gap-6 lg:gap-10"
                   style={{
@@ -76,9 +91,14 @@ export default function Projects({ t, lang }) {
                     transition: 'opacity 0.35s ease',
                   }}
                 >
+                  {/* Index */}
+                  <span className="shrink-0 font-mono text-4xl lg:text-5xl font-medium tabular-nums text-transparent self-start leading-none [-webkit-text-stroke:1px_#a1a1aa] dark:[-webkit-text-stroke:1px_#52525b]">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+
                   {/* Title */}
                   <h3
-                    className="font-bold tracking-[-0.03em] leading-[1.05] text-zinc-900 dark:text-zinc-50 lg:max-w-[55%] lg:basis-[55%] whitespace-pre-line"
+                    className="font-bold uppercase tracking-[-0.02em] leading-[1.05] text-zinc-900 dark:text-zinc-50 lg:max-w-[55%] lg:basis-[55%] whitespace-pre-line"
                     style={{
                       fontSize: 'clamp(1.75rem, 3.2vw, 2.75rem)',
                       transform: hoveredId === project.id ? 'translateX(6px)' : 'translateX(0)',
@@ -91,7 +111,7 @@ export default function Projects({ t, lang }) {
                   {/* Tags */}
                   <div className="hidden lg:flex flex-col items-end ml-auto shrink-0 gap-1.5">
                     {project.tags.map(tag => (
-                      <span key={tag} className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+                      <span key={tag} className="font-mono uppercase tracking-[0.05em] text-xs text-zinc-500">
                         {tag}
                       </span>
                     ))}
@@ -115,9 +135,9 @@ export default function Projects({ t, lang }) {
           </div>
         </div>
 
-        {/* Mobile: card stack */}
+        {/* Mobile / tablet: card stack */}
         <motion.div
-          className="grid md:hidden grid-cols-1 gap-10"
+          className="grid lg:hidden grid-cols-1 md:grid-cols-2 gap-10 md:gap-x-8 md:gap-y-14"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
@@ -126,10 +146,11 @@ export default function Projects({ t, lang }) {
             show: { opacity: 1, transition: { staggerChildren: 0.1 } },
           }}
         >
-          {t.projects.items.map((project) => (
+          {t.projects.items.map((project, i) => (
             <MobileCard
               key={project.id}
               project={project}
+              index={i}
               onClick={() => setSelectedId(project.id)}
             />
           ))}
@@ -173,7 +194,7 @@ export default function Projects({ t, lang }) {
   );
 }
 
-function MobileCard({ project, onClick }) {
+function MobileCard({ project, index, onClick }) {
   return (
     <motion.article
       variants={{
@@ -181,9 +202,22 @@ function MobileCard({ project, onClick }) {
         show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
       }}
       className="group cursor-pointer"
+      role="button"
+      tabIndex={0}
+      aria-haspopup="dialog"
       onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
-      <div className="relative overflow-hidden aspect-[4/3] mb-4 bg-zinc-100 dark:bg-zinc-900">
+      <div className="flex items-center justify-between border-t border-zinc-900 dark:border-zinc-100 pt-3 mb-4 font-mono uppercase tracking-[0.05em] text-xs text-zinc-400">
+        <span>{String(index + 1).padStart(2, '0')}</span>
+        <span>↗</span>
+      </div>
+      <div className="relative overflow-hidden aspect-[4/3] mb-4 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
         <img
           src={project.image}
           alt={project.title}
@@ -194,12 +228,12 @@ function MobileCard({ project, onClick }) {
       </div>
       <div className="flex items-start gap-4">
         <div>
-          <h3 className="text-2xl font-bold tracking-[-0.03em] text-zinc-900 dark:text-zinc-50 mb-3 whitespace-pre-line">
+          <h3 className="text-2xl font-bold uppercase tracking-[-0.02em] text-zinc-900 dark:text-zinc-50 mb-3 whitespace-pre-line">
             {project.title}
           </h3>
           <div className="flex flex-col gap-1.5">
             {project.tags.map(tag => (
-              <span key={tag} className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-500">
+              <span key={tag} className="font-mono uppercase tracking-[0.05em] text-xs text-zinc-500">
                 {tag}
               </span>
             ))}
@@ -211,10 +245,13 @@ function MobileCard({ project, onClick }) {
 }
 
 function ProjectModal({ project, onClose, lang }) {
+  const closeRef = React.useRef(null);
+
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && onClose();
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
+    closeRef.current?.focus();
     return () => {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
@@ -222,7 +259,12 @@ function ProjectModal({ project, onClose, lang }) {
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={project.title.replace('\n', ' ')}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-8"
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -236,44 +278,47 @@ function ProjectModal({ project, onClose, lang }) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 24 }}
         transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-7xl bg-white dark:bg-[#09090b] overflow-hidden shadow-2xl flex flex-col lg:flex-row h-[85vh]"
+        className="relative w-full max-w-7xl bg-white dark:bg-[#09090b] overflow-hidden shadow-2xl flex flex-col h-[100dvh] md:h-[85vh]"
       >
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-5 z-20 w-10 h-10 flex items-center justify-center bg-white/90 dark:bg-zinc-900/90 backdrop-blur text-zinc-900 dark:text-zinc-100 transition-all hover:scale-105 border border-zinc-200 dark:border-zinc-800"
-          aria-label="Close"
-        >
-          <span className="text-lg leading-none">×</span>
-        </button>
-
-        <div className="w-full lg:w-[60%] h-[40vh] lg:h-full overflow-hidden bg-zinc-100 dark:bg-zinc-900 shrink-0">
-          <img
-            src={project.image}
-            alt={project.title}
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover"
-          />
+        {/* Header bar */}
+        <div className="shrink-0 flex items-stretch justify-between border-b border-zinc-200 dark:border-zinc-800">
+          <span className="flex items-center px-6 md:px-8 font-mono uppercase tracking-[0.05em] text-xs text-zinc-400">
+            {String(project.id).padStart(2, '0')} / {lang === 'pt' ? 'Projeto' : 'Project'}
+          </span>
+          <button
+            ref={closeRef}
+            onClick={onClose}
+            className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center border-l border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 transition-colors"
+            aria-label={lang === 'pt' ? 'Fechar' : 'Close'}
+          >
+            <span className="text-xl leading-none">×</span>
+          </button>
         </div>
 
-        <div className="w-full lg:w-[40%] flex-1 lg:flex-none flex flex-col min-h-0">
-          <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pl-6 md:pl-8 pr-16 pt-8 md:pt-10 pb-4">
-            <h3 className="text-2xl md:text-3xl font-bold tracking-[-0.02em] leading-[1.1] mb-5">
+        <div className="flex-1 min-h-0 flex flex-col lg:flex-row">
+          <div className="w-full lg:w-[60%] h-[35dvh] md:h-[40vh] lg:h-full overflow-hidden bg-zinc-100 dark:bg-zinc-900 shrink-0 lg:shrink lg:border-r border-b lg:border-b-0 border-zinc-200 dark:border-zinc-800">
+            <img
+              src={project.image}
+              alt={project.title}
+              referrerPolicy="no-referrer"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="w-full lg:w-[40%] flex-1 lg:flex-none min-h-0 overflow-y-auto custom-scrollbar px-6 md:px-8 pt-6 md:pt-8 pb-8">
+            <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-[-0.02em] leading-[1.1] mb-5">
               {project.title}
             </h3>
+            <div className="flex flex-wrap gap-2 pb-6 mb-6 border-b border-zinc-200 dark:border-zinc-800">
+              {project.tags.map(tag => (
+                <span key={tag} className="px-2.5 py-1 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 text-[10px] font-mono uppercase tracking-[0.05em]">
+                  {tag}
+                </span>
+              ))}
+            </div>
             <div className="text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-300 font-light space-y-4">
               {project.description.split('\n').map((para, i) => (
                 <p key={i}>{para}</p>
-              ))}
-            </div>
-          </div>
-
-          <div className="shrink-0 px-8 md:px-12 pb-6 md:pb-8 bg-white dark:bg-[#09090b]">
-            <h4 className="text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-400 mb-3">Stack</h4>
-            <div className="flex flex-wrap gap-2">
-              {project.tags.map(tag => (
-                <span key={tag} className="px-3 py-1.5 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 text-[9px] font-mono uppercase tracking-widest">
-                  {tag}
-                </span>
               ))}
             </div>
           </div>
