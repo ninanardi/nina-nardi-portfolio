@@ -278,7 +278,7 @@ function ProjectModal({ project, onClose, lang }) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 24 }}
         transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-7xl bg-white dark:bg-[#09090b] overflow-hidden shadow-2xl flex flex-col h-[100dvh] md:h-[85vh]"
+        className="relative w-full max-w-7xl bg-white dark:bg-zinc-900 dark:border dark:border-zinc-800 overflow-hidden shadow-2xl flex flex-col h-[100dvh] md:h-[85vh]"
       >
         {/* Header bar */}
         <div className="shrink-0 flex items-stretch justify-between border-b border-zinc-200 dark:border-zinc-800">

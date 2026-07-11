@@ -32,7 +32,7 @@ export default function Hero({ t, lang }) {
           {/* Title */}
           <motion.h1
             variants={item}
-            className="text-[22vw] md:text-[18vw] lg:text-[16rem] font-black leading-[0.8] tracking-[-0.04em] text-zinc-900 dark:text-zinc-50 mb-10 md:mb-14"
+            className="text-[22vw] md:text-[18vw] lg:text-[16rem] font-black leading-[0.8] tracking-[-0.04em] text-zinc-900 dark:text-zinc-50 mb-10 md:mb-14 -ml-[0.03em]"
           >
             <span className="block">NINA</span>
             <span className="block">NARDI</span>
