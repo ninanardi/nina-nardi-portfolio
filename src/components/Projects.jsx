@@ -184,7 +184,7 @@ export default function Projects({ t, lang }) {
               alt=""
               referrerPolicy="no-referrer"
               decoding="async"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
             />
           </motion.div>
         )}
@@ -232,7 +232,7 @@ function MobileCard({ project, index, onClick }) {
           src={project.image}
           alt={project.title}
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+          className="w-full h-full object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/20 via-transparent to-transparent pointer-events-none" />
       </div>
@@ -311,7 +311,7 @@ function ProjectModal({ project, onClose, lang }) {
               src={project.image}
               alt={project.title}
               referrerPolicy="no-referrer"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
             />
           </div>
 

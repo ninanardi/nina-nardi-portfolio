@@ -121,6 +121,11 @@ export default function CaseStudy({ project, t, lang }) {
             referrerPolicy="no-referrer"
             className="w-full h-auto [filter:drop-shadow(0_20px_35px_rgba(24,24,27,0.22))] dark:[filter:drop-shadow(0_20px_35px_rgba(0,0,0,0.55))]"
           />
+          {cs.coverCaption && (
+            <p className="mt-4 font-mono text-xs text-zinc-400 leading-relaxed">
+              {cs.coverCaption}
+            </p>
+          )}
         </div>
       </motion.div>
 
