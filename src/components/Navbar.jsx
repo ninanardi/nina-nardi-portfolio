@@ -39,6 +39,12 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const id = href.replace('#', '');
+    // Fora da home (ex.: página de case) a seção não existe no DOM:
+    // muda o hash e deixa o App renderizar a home e rolar até ela.
+    if (!document.getElementById(id)) {
+      window.location.hash = href;
+      return;
+    }
     if (id === 'home') smoothScrollTo(0);
     else smoothScrollToId(id);
   };

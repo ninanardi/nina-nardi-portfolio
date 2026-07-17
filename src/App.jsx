@@ -8,6 +8,7 @@ import Projects from './components/Projects.jsx';
 import About from './components/About.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import CaseStudy from './components/CaseStudy.jsx';
 
 import { translations } from './translations.js';
 
@@ -15,6 +16,13 @@ export default function App() {
   const [lang, setLangState] = useState(() => localStorage.getItem('nn-lang') || 'pt');
   const [theme, setThemeState] = useState(() => localStorage.getItem('nn-theme') || 'light');
   const [showTop, setShowTop] = useState(false);
+  const [route, setRoute] = useState(() => window.location.hash);
+
+  useEffect(() => {
+    const onHash = () => setRoute(window.location.hash);
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
 
   const setLang = (l) => { setLangState(l); localStorage.setItem('nn-lang', l); };
   const setTheme = (t) => { setThemeState(t); localStorage.setItem('nn-theme', t); };
@@ -34,6 +42,34 @@ export default function App() {
   }, []);
 
   const t = translations[lang];
+
+  const caseSlug = route.startsWith('#/case/') ? route.slice('#/case/'.length) : null;
+  const caseProject = caseSlug
+    ? t.projects.items.find(p => p.slug === caseSlug && p.caseStudy)
+    : null;
+
+  // Ao voltar da página de case por âncora (#projects), o elemento ainda não
+  // existe quando o hash muda — só depois do re-render. Rola manualmente.
+  useEffect(() => {
+    if (caseProject) return;
+    const id = route.replace('#', '');
+    if (!id || id.startsWith('/')) return;
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView();
+    });
+  }, [route, caseProject]);
+
+  if (caseProject) {
+    return (
+      <div className="min-h-screen selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-900">
+        <Navbar lang={lang} setLang={setLang} theme={theme} setTheme={setTheme} t={t} />
+        <main id="main">
+          <CaseStudy project={caseProject} t={t} lang={lang} />
+        </main>
+        <Footer lang={lang} />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen selection:bg-zinc-900 selection:text-white dark:selection:bg-white dark:selection:text-zinc-900">

@@ -13,6 +13,16 @@ export default function Projects({ t, lang }) {
   const selectedProject = t.projects.items.find(p => p.id === selectedId);
   const hoveredProject = t.projects.items.find(p => p.id === hoveredId);
 
+  // Projetos com estudo de caso navegam para a página dedicada;
+  // os demais continuam abrindo no modal.
+  const openProject = useCallback((project) => {
+    if (project.caseStudy && project.slug) {
+      window.location.hash = `#/case/${project.slug}`;
+    } else {
+      setSelectedId(project.id);
+    }
+  }, []);
+
   const handleMouseMove = useCallback((e) => {
     rawX.set(e.clientX + 28);
     rawY.set(e.clientY - 96);
@@ -75,13 +85,13 @@ export default function Projects({ t, lang }) {
                 <div
                   role="button"
                   tabIndex={0}
-                  aria-haspopup="dialog"
+                  aria-haspopup={project.caseStudy ? undefined : 'dialog'}
                   aria-label={`${project.title.replace('\n', ' ')} — ${lang === 'pt' ? 'ver detalhes' : 'view details'}`}
-                  onClick={() => setSelectedId(project.id)}
+                  onClick={() => openProject(project)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      setSelectedId(project.id);
+                      openProject(project);
                     }
                   }}
                   onMouseEnter={() => setHoveredId(project.id)}
@@ -151,7 +161,7 @@ export default function Projects({ t, lang }) {
               key={project.id}
               project={project}
               index={i}
-              onClick={() => setSelectedId(project.id)}
+              onClick={() => openProject(project)}
             />
           ))}
         </motion.div>
@@ -204,7 +214,7 @@ function MobileCard({ project, index, onClick }) {
       className="group cursor-pointer"
       role="button"
       tabIndex={0}
-      aria-haspopup="dialog"
+      aria-haspopup={project.caseStudy ? undefined : 'dialog'}
       onClick={onClick}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -271,7 +281,7 @@ function ProjectModal({ project, onClose, lang }) {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         onClick={onClose}
-        className="absolute inset-0 bg-zinc-950/85 backdrop-blur-md"
+        className="absolute inset-0 bg-zinc-950/50 backdrop-blur-sm"
       />
       <motion.div
         initial={{ opacity: 0, y: 24 }}
