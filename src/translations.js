@@ -38,7 +38,7 @@ export const translations = {
           slug: "cybersecurity-platform",
           title: "WSS Platform / TCC",
           image: "projects/wss-dashboard.webp",
-          imageHover: "projects/wss-chat.webp",
+          imageHover: "projects/wss-hover.webp",
           description: "Traduzindo cibersegurança em decisão de negócio: plataforma B2B que transforma relatórios técnicos densos em valor tangível para gestores sem background em segurança.",
           tags: ["Product Design", "TCC", "Design System"],
           caseStudy: {
@@ -90,18 +90,14 @@ export const translations = {
               },
               {
                 title: "Resultado",
-                body: "O protótipo mostra que o design consegue romper a barreira técnica em três frentes: abstração visual (dados que comunicam, convertendo logs técnicos em indicadores claros), tradução contextual (risco mapeado em impacto financeiro e reputacional) e colaboração contínua (fim do silêncio entre especialista e cliente).\nOs próximos passos seguem um roadmap por prazo: no médio prazo, uma versão mobile responsiva, para que a tomada de decisão não dependa de acesso a um computador; no longo prazo, histórico de relatórios anteriores e bookmarks no feed, para que a cliente acompanhe a evolução da sua segurança ao longo do tempo."
-              },
-              {
-                title: "O que eu levo desse projeto",
-                body: "Entender que, em B2B técnico, a interface certa não é a que mostra mais dado, e sim a que decide o que esconder e em que ordem revelar.\nO maior ganho de usabilidade do projeto não veio de um componente novo: veio de uma decisão de conteúdo, tirar o CVSS da primeira camada de leitura. Sozinho, um código técnico não comunica risco para quem não é da área, ele só prova que algo existe. Ao reorganizar a mesma informação em camadas — negócio primeiro, recomendação depois, evidência técnica por último — o mesmo dado passou a servir dois públicos diferentes na mesma tela, sem que um atrapalhasse o outro. Tradução, em design, é menos sobre adicionar explicação e mais sobre sequenciar o que já existe."
+                body: "O protótipo responde à pergunta de pesquisa em três frentes. Abstração e visualização de dados: o Dashboard converte uma gama de pontos de dados complexos em indicadores de alto nível, como o score de Saúde de Segurança, resolvendo a dor do cliente de enfrentar relatórios densos. Tradução de informações técnicas: o modal de Descobertas não apenas identifica a vulnerabilidade, mas a contextualiza em \"Por que importa para você\" e \"O que recomendamos fazer\". Colaboração e imediatismo: o módulo de Chat supera as barreiras processuais de comunicação que geravam o silêncio durante o serviço.\nPara uma V2, o roadmap segue por prioridade: primeiro as telas de papel administrativo, essenciais para tornar a plataforma funcional; depois a visualização de relatórios de serviços anteriores, para o cliente acompanhar sua evolução ao longo do tempo; em seguida, a função de salvar publicações do feed; e por fim, uma versão mobile responsiva."
               }
             ],
             results: {
               title: "Resultados",
               items: [
-                { value: "3 camadas", label: "risco de negócio, recomendação e evidência técnica, nessa ordem" },
-                { value: "4 módulos", label: "feed, dashboard, documentos e chat em uma única plataforma" },
+                { value: "1 score", label: "Saúde de Segurança substitui a listagem técnica por um indicador único" },
+                { value: "3 camadas", label: "risco de negócio, contextualização e evidência técnica" },
                 { value: "1 canal", label: "chat contínuo elimina o silêncio durante a execução" }
               ]
             },
@@ -157,7 +153,7 @@ export const translations = {
           slug: "cybersecurity-platform",
           title: "WSS Platform / Thesis",
           image: "projects/wss-dashboard.webp",
-          imageHover: "projects/wss-chat.webp",
+          imageHover: "projects/wss-hover.webp",
           description: "Translating cybersecurity into business decisions: a B2B platform that turns dense technical reports into tangible value for managers with no security background.",
           tags: ["Product Design", "Thesis", "Design System"],
           caseStudy: {
@@ -209,18 +205,14 @@ export const translations = {
               },
               {
                 title: "Result",
-                body: "The prototype shows that design can break the technical barrier on three fronts: visual abstraction (data that communicates, converting technical logs into clear indicators), contextual translation (risk mapped into financial and reputational impact), and continuous collaboration (the end of silence between specialist and client).\nThe next steps follow a phased roadmap: in the medium term, a responsive mobile version, so decision-making doesn't depend on access to a computer; in the long term, a history of past reports and bookmarks in the feed, so the client can track the evolution of their security over time."
-              },
-              {
-                title: "What I take from this project",
-                body: "Understanding that in technical B2B, the right interface isn't the one that shows the most data, it's the one that decides what to hide and in what order to reveal it.\nThe project's biggest usability gain didn't come from a new component: it came from a content decision, removing CVSS from the first reading layer. On its own, a technical code doesn't communicate risk to someone outside the field, it only proves that something exists. By reorganizing the same information into layers — business first, then recommendation, then technical evidence last — the same data started serving two different audiences on the same screen, without one getting in the other's way. Translation, in design, is less about adding explanation and more about sequencing what's already there."
+                body: "The prototype answers the research question on three fronts. Data abstraction and visualization: the Dashboard converts a range of complex data points into high-level indicators, like the Security Health score, solving the client's pain of facing dense reports. Translation of technical information: the Findings modal doesn't just identify the vulnerability, it contextualizes it into \"Why it matters to you\" and \"What we recommend doing\". Collaboration and immediacy: the Chat module overcomes the procedural communication barriers that caused silence during the service.\nFor a V2, the roadmap follows this priority: first, admin-role screens, essential to make the platform functional; then, a view for past service reports, so the client can track their evolution over time; next, the ability to save feed posts; and finally, a responsive mobile version."
               }
             ],
             results: {
               title: "Results",
               items: [
-                { value: "3 layers", label: "business risk, recommendation and technical evidence, in that order" },
-                { value: "4 modules", label: "feed, dashboard, documents and chat in a single platform" },
+                { value: "1 score", label: "Security Health replaces the technical listing with a single indicator" },
+                { value: "3 layers", label: "business risk, contextualization and technical evidence" },
                 { value: "1 channel", label: "continuous chat removes the silence during execution" }
               ]
             },
