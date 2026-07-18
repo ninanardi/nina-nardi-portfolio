@@ -40,7 +40,7 @@ export const translations = {
           image: "projects/wss-dashboard.webp",
           imageHover: "projects/wss-hover.webp",
           description: "Traduzindo cibersegurança em decisão de negócio: plataforma B2B que transforma relatórios técnicos densos em valor tangível para gestores sem background em segurança.",
-          tags: ["Product Design", "TCC", "Design System"],
+          tags: ["Product Design", "TCC", "UX Research"],
           caseStudy: {
             eyebrow: "Estudo de caso",
             client: "WSS Security",
@@ -155,7 +155,7 @@ export const translations = {
           image: "projects/wss-dashboard.webp",
           imageHover: "projects/wss-hover.webp",
           description: "Translating cybersecurity into business decisions: a B2B platform that turns dense technical reports into tangible value for managers with no security background.",
-          tags: ["Product Design", "Thesis", "Design System"],
+          tags: ["Product Design", "Thesis", "UX Research"],
           caseStudy: {
             eyebrow: "Case study",
             client: "WSS Security",

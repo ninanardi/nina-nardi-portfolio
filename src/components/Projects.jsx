@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 
+const objectPosition = (project) => project.slug === 'cybersecurity-platform' ? 'object-top' : 'object-center';
+
 export default function Projects({ t, lang }) {
   const [selectedId, setSelectedId] = useState(null);
   const [hoveredId, setHoveredId] = useState(null);
@@ -184,7 +186,7 @@ export default function Projects({ t, lang }) {
               alt=""
               referrerPolicy="no-referrer"
               decoding="async"
-              className="w-full h-full object-cover object-top"
+              className={`w-full h-full object-cover ${objectPosition(hoveredProject)}`}
             />
           </motion.div>
         )}
@@ -229,10 +231,10 @@ function MobileCard({ project, index, onClick }) {
       </div>
       <div className="relative overflow-hidden aspect-[4/3] mb-4 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
         <img
-          src={project.image}
+          src={project.imageHover || project.image}
           alt={project.title}
           referrerPolicy="no-referrer"
-          className="w-full h-full object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+          className={`w-full h-full object-cover ${objectPosition(project)} transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]`}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/20 via-transparent to-transparent pointer-events-none" />
       </div>
@@ -311,7 +313,7 @@ function ProjectModal({ project, onClose, lang }) {
               src={project.image}
               alt={project.title}
               referrerPolicy="no-referrer"
-              className="w-full h-full object-cover object-top"
+              className={`w-full h-full object-cover ${objectPosition(project)}`}
             />
           </div>
 
