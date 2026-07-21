@@ -106,7 +106,51 @@ export const translations = {
           }
         },
         { id: 3, title: "PCP / Departamento de Componentes Aeroespaciais", image: "projects/pcp-aerospace-modal-light.webp", imageHover: "projects/pcp-aerospace-hover-light.webp", description: "Plataforma B2B desenvolvida para o departamento de componentes aeronáuticos da empresa com foco em planejamento e controle da produção. O sistema integra gestão de demanda, visibilidade de estoque e sequenciamento produtivo em módulos interconectados, oferecendo uma visão unificada dos processos logísticos e operacionais.\nO desafio de design foi traduzir fluxos complexos de dados industriais em interfaces claras e funcionais para diferentes perfis de usuário (do gestor financeiro ao planejador de produção), mantendo consistência e usabilidade em um ambiente de alta criticidade operacional.", tags: ["Design de Interface", "Product"] },
-        { id: 4, title: "PCP / Multinacional de Logística e Montagem", image: "projects/pcp-assembly-modal-light.webp", imageHover: "projects/pcp-assembly-hover-light.webp", description: "Plataforma de PCP para uma multinacional de logística e montagem voltada à organização e controle da produção fabril, integrando setores, automatizando o sequenciamento e centralizando a visibilidade operacional em tempo real.\nO redesign buscou rever a interface e a usabilidade do sistema, além de modificar e expandir features que impactaram diretamente na redução de erros, paradas de fábrica e retrabalhos. O controle do fluxo logístico, incluindo dwell time e seleção de contêineres e caixas de peças, compõe um dos módulos novos do sistema, contribuindo para a precisão do planejamento em operações de escala.", tags: ["Redesign de Produto", "Arquitetura de Módulos", "Desenvolvimento de Features"] }
+        {
+          id: 4,
+          slug: "creatus-design-system",
+          title: "CREATUS DS",
+          image: "projects/creatus-modal.webp",
+          imageHover: "projects/creatus-hover.webp",
+          description: "Estruturando um design system do zero para uma interface construída em GPUI: como Carbon (IBM) e a identidade visual herdada do produto se combinaram para sustentar uma experiência de alta densidade.",
+          tags: ["Design System", "Documentação de Componentes", "Product Design"],
+          caseStudy: {
+            eyebrow: "Estudo de caso",
+            client: "Preto no Branco",
+            year: "2025",
+            role: "Product Designer",
+            sector: "Segurança portuária B2B",
+            headline: "Um design system pensado para performance em GPUI",
+            coverImage: "projects/creatus-tokens.webp",
+            coverCaption: "Documentação de tokens de cor, espaçamento, raio de borda e tipografia do design system, aplicados a um software de segurança portuária.",
+            disclaimer: "Projeto profissional desenvolvido na Preto no Branco. Este estudo de caso descreve o processo e as decisões de design de um software de monitoramento e inspeção de contêineres para o setor de segurança portuária. Detalhes proprietários de negócio, telas específicas e dados de cliente não são exibidos aqui.",
+            intro: "O software em questão é o produto carro-chefe da Preto no Branco, uma plataforma de monitoramento e inspeção de contêineres para o setor de segurança portuária, com alto volume de análises processadas por dia. A base de código foi migrada para Rust, usando a GPUI (engine de UI do Zed) na renderização, para ganhar performance em um contexto de uso intensivo.\nEssa mudança de stack exigiu estruturar um design system do zero: a v2 do produto não tinha um sistema documentado, só padrões visuais informais espalhados entre telas.",
+            sections: [
+              {
+                title: "O contexto",
+                body: "Participei da estruturação do design system junto com outro designer, que liderou o projeto. Minha contribuição concreta foi documentar os tokens fundamentais (cor, espaçamento, raio de borda) e construir os componentes-base de menor complexidade, como badge e tooltip, seguindo os padrões de arquitetura definidos em conjunto com quem liderava o projeto."
+              },
+              {
+                title: "A decisão: continuidade visual e Carbon",
+                body: "Combinar duas referências de design system partiu de duas restrições diferentes, uma técnica e uma de produto.\nCarbon (IBM) resolveu a restrição técnica. A GPUI renderiza a interface direto na GPU, então componentes com muitas camadas visuais, efeitos ou animações complexas custam caro em performance, porque cada frame precisa recalcular geometria e repintar. Carbon foi desenhado para esse tipo de cenário, interfaces densas, enterprise, com grande volume de dado exibido e atualizado. Seus princípios priorizam estados visuais simples e previsíveis e densidade de informação sem perder legibilidade.\nUm design system interno, usado como referência de continuidade visual, resolveu a restrição de produto. A v2 do produto já tinha uma identidade visual reconhecida por usuários recorrentes, equipes de operação portuária que usam o sistema diariamente. Trocar a stack técnica não podia significar trocar a linguagem visual da noite para o dia, isso quebraria a familiaridade já construída. Os ícones do sistema vêm da biblioteca do Carbon, estendendo essa influência também para a camada visual, além da estrutural.\nA decisão de design partiu de uma restrição de engenharia. O trabalho de design system foi conciliar as duas influências sem gerar inconsistência visual ou de comportamento."
+              },
+              {
+                title: "Arquitetura em três camadas",
+                body: "O sistema foi estruturado em camadas, visíveis na documentação de tokens e componentes.\n**Fundamentos:** tokens organizados em duas camadas, semântica e primitiva. Um token como content/primary referencia um valor primitivo como color/neutral/light/1200, com variação nativa para modo claro e escuro. O mesmo padrão vale para espaçamento, tokens semânticos (padding/m, gap/l) apontam para uma escala numérica de primitivos (space/16, space/24). Essa separação permite ao time de desenvolvimento consumir só os nomes semânticos no código, sem lidar com valores brutos. O raio de borda segue uma escala completa, com um token à parte, radius/surface, dedicado a superfícies. O grid é responsivo por plataforma, com valores próprios de columns, gutter e margin por contexto de uso (desktop ou mobile/web).\nUm ponto que reforça a decisão técnica por trás do sistema: não existe uma escala de elevação por sombra, do tipo Material Design com múltiplos níveis de profundidade. Sombra fica limitada a um uso funcional específico, menus flutuantes, porque em GPUI sombras e desfoques generalizados representam um custo de processamento relevante.\n**Componentes-base:** elementos reutilizáveis e desacoplados de qualquer contexto específico de produto, como botão, badge, tooltip e modal (dividido em partes menores como modal-header, modal-footer, modal-overlay). Cada componente tem documentação própria, com grade de variantes cruzando estilo, status e tamanho, e uma seção de Playground para testar composições ao vivo dentro do próprio Figma.\n**Composições de produto:** telas e blocos montados a partir dos componentes-base, já resolvendo casos de uso do domínio de segurança portuária, como modais de cadastro, modais de configuração de acesso e cards de perfil de acesso. Nessa camada o sistema deixa de ser genérico e passa a atender os fluxos reais do software."
+              },
+              {
+                title: "Exemplo aprofundado: side panel, slots e toolbar",
+                body: "O maior diferencial do sistema não está num componente isolado, está na combinação entre a side panel e o componente de slot.\nA side panel existe como uma estrutura única que se repete em pelo menos cinco contextos diferentes do produto: análise fiscal, análise de IA, imagens de IA, atividade e inspeção. Em vez de desenhar um painel lateral distinto para cada fluxo, o sistema mantém uma casca comum e troca o conteúdo interno conforme o contexto.\nEssa troca de conteúdo é resolvida pelo componente de slot, documentado com um propósito claro: equilibrar customização e consistência. Qualquer conteúdo customizado inserido num slot precisa manter a integridade do design system e seguir padrões de acessibilidade e usabilidade, mesmo sendo variável. Na prática, um analista de fiscalização e um analista de IA usam a mesma estrutura de navegação e a mesma lógica de interação, só o conteúdo interno muda, o que reduz a curva de aprendizado entre módulos do produto.\nA toolbar reforça esse mesmo princípio de reuso por outro caminho: existe uma versão genérica do componente e uma versão especializada para a tabela de dados, com o item de toolbar específico para ações em lote. O componente passou por várias iterações registradas (3.0, 3.1), o que indica que a estrutura base precisou ser testada e ajustada até se adaptar bem a diferentes contextos de uso, sem virar um componente novo a cada vez."
+              },
+              {
+                title: "Resultado",
+                body: "A documentação de tokens e variantes reduziu decisões visuais tomadas caso a caso, sem critério fixo, na criação de novas telas e passou a ser a referência consultada pelo time ao especificar novos fluxos. A clareza da documentação foi validada na prática de um jeito direto: os desenvolvedores usaram Codex e Claude para reproduzir os componentes especificados diretamente em código, a partir da documentação de tokens e variantes, sem precisar de handoff manual peça por peça."
+              }
+            ],
+            backToProjects: "Voltar aos projetos",
+            nextLabel: "Próximo projeto"
+          }
+        }
       ]
     },
     contact: {
@@ -221,7 +265,51 @@ export const translations = {
           }
         },
         { id: 3, title: "PCP / Aerospace Components Department", image: "projects/pcp-aerospace-modal-light.webp", imageHover: "projects/pcp-aerospace-hover-light.webp", description: "B2B platform built for the company's aeronautical components department, focused on production planning and control. The system integrates demand management, inventory visibility, and production sequencing across interconnected modules, providing a unified view of logistics and operational processes.\nThe design challenge was translating complex industrial data flows into clear, functional interfaces for different user profiles (from financial managers to production planners), while maintaining consistency and usability in a high-criticality operational environment.", tags: ["Interface Design", "Product"] },
-        { id: 4, title: "PCP / Logistics & Assembly Multinational", image: "projects/pcp-assembly-modal-light.webp", imageHover: "projects/pcp-assembly-hover-light.webp", description: "Production planning and control platform for a logistics and assembly multinational, focused on organizing and controlling factory production by integrating departments, automating sequencing, and centralizing operational visibility in real time.\nThe redesign revisited the system's interface and usability, while modifying and expanding features that directly reduced errors, factory downtime, and rework. Logistics flow control — including dwell time and the selection of containers and parts boxes — is one of the new modules in the system, contributing to planning precision in large-scale operations.", tags: ["Product Redesign", "Module Architecture", "Feature Development"] }
+        {
+          id: 4,
+          slug: "creatus-design-system",
+          title: "CREATUS DS",
+          image: "projects/creatus-modal.webp",
+          imageHover: "projects/creatus-hover.webp",
+          description: "Structuring a design system from scratch for an interface built in GPUI: how Carbon (IBM) and the product's inherited visual identity combined to support a high-density experience.",
+          tags: ["Design System", "Component Documentation", "Product Design"],
+          caseStudy: {
+            eyebrow: "Case study",
+            client: "Preto no Branco",
+            year: "2025",
+            role: "Product Designer",
+            sector: "B2B Port Security",
+            headline: "A design system built for performance in GPUI",
+            coverImage: "projects/creatus-tokens.webp",
+            coverCaption: "Documentation of color, spacing, border radius, and typography tokens, applied to a port security software.",
+            disclaimer: "Professional project developed at Preto no Branco. This case study describes the process and design decisions behind a container monitoring and inspection product for the port security sector. Proprietary business details, specific screens, and client data are not shown here.",
+            intro: "The software in question is Preto no Branco's flagship product, a container monitoring and inspection platform for the port security sector, with a high volume of analyses processed per day. The codebase was migrated to Rust, using GPUI (Zed's UI engine) for rendering, to gain performance in a context of intensive use.\nThat stack change required structuring a design system from scratch: v2 of the product had no documented system, only informal visual patterns scattered across screens.",
+            sections: [
+              {
+                title: "The context",
+                body: "I took part in structuring the design system alongside another designer, who led the project. My concrete contribution was documenting the foundational tokens (color, spacing, border radius) and building the lower-complexity base components, like badge and tooltip, following the architecture patterns defined together with whoever led the project."
+              },
+              {
+                title: "The decision: visual continuity and Carbon",
+                body: "Combining two design system references came from two different constraints, one technical and one product-related.\nCarbon (IBM) solved the technical constraint. GPUI renders the interface directly on the GPU, so components with many visual layers, effects, or complex animations cost a lot in performance, since every frame has to recalculate geometry and repaint. Carbon was designed for that kind of scenario, dense, enterprise interfaces with a large volume of data displayed and updated. Its principles prioritize simple, predictable visual states and information density without losing legibility.\nAn internal design system, used as a reference for visual continuity, solved the product constraint. The product's v2 already had a visual identity recognized by recurring users, port operation teams who use the system daily. Changing the technical stack couldn't mean changing the visual language overnight, that would break the familiarity already built. The system's icons come from Carbon's library, extending that influence to the visual layer as well, not just the structural one.\nThe design decision came from an engineering constraint. The design system work was reconciling both influences without generating visual or behavioral inconsistency."
+              },
+              {
+                title: "Three-layer architecture",
+                body: "The system was structured in layers, visible throughout the token and component documentation.\n**Foundations:** tokens organized into two layers, semantic and primitive. A token like content/primary references a primitive value like color/neutral/light/1200, with native variation for light and dark mode. The same pattern applies to spacing, semantic tokens (padding/m, gap/l) point to a numeric scale of primitives (space/16, space/24). This separation lets the development team consume only semantic names in code, without dealing with raw values. Border radius follows a full scale, with a separate token, radius/surface, dedicated to surfaces. The grid is responsive per platform, with its own columns, gutter, and margin values by context of use (desktop or mobile/web).\nOne point that reinforces the technical decision behind the system: there is no shadow-based elevation scale, the kind Material Design uses with multiple depth levels. Shadow is limited to one specific functional use, floating menus, because in GPUI, widespread shadows and blur effects represent a meaningful processing cost.\n**Base components:** reusable elements decoupled from any specific product context, like button, badge, tooltip, and modal (split into smaller parts like modal-header, modal-footer, modal-overlay). Each component has its own documentation, with a variant grid crossing style, status, and size, and a Playground section to test compositions live inside Figma itself.\n**Product compositions:** screens and blocks assembled from the base components, already solving use cases from the port security domain, like registration modals, access configuration modals, and access profile cards. At this layer the system stops being generic and starts serving the software's real flows."
+              },
+              {
+                title: "Deep dive: side panel, slots, and toolbar",
+                body: "The system's biggest differentiator isn't in any single component, it's in the combination of the side panel and the slot component.\nThe side panel exists as a single structure that repeats across at least five different contexts in the product: fiscal analysis, AI analysis, AI images, activity, and inspection. Instead of designing a distinct side panel for each flow, the system keeps a common shell and swaps the internal content depending on the context.\nThat content swap is solved by the slot component, documented with a clear purpose: balancing customization and consistency. Any custom content or component inserted into a slot needs to maintain the design system's integrity and follow accessibility and usability standards, even while being variable. In practice, a fiscal analyst and an AI analyst use the same navigation structure and the same interaction logic, only the internal content changes, which reduces the learning curve between product modules.\nThe toolbar reinforces this same reuse principle from a different angle: there's a generic version of the component and a specialized version for the data table, with a toolbar item specific to batch actions. The component went through several recorded iterations (3.0, 3.1), which shows the base structure needed to be tested and adjusted until it adapted well to different use contexts, without turning into a new component every time."
+              },
+              {
+                title: "Result",
+                body: "The token and variant documentation reduced one-off visual decisions made without a fixed criteria when creating new screens and became the reference the team consulted when specifying new flows. The documentation's clarity was validated in a very direct way: developers used Codex and Claude to reproduce the specified components straight in code, from the token and variant documentation, without needing manual piece-by-piece handoff."
+              }
+            ],
+            backToProjects: "Back to projects",
+            nextLabel: "Next project"
+          }
+        }
       ]
     },
     contact: {

@@ -113,10 +113,11 @@ export default function CaseStudy({ project, t, lang }) {
       </header>
 
       {/* Cover image */}
+      {!cs.hideCover && (
       <motion.div {...fadeUp} className="px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
           <img
-            src={project.image}
+            src={cs.coverImage || project.image}
             alt={project.title.replace('\n', ' ')}
             referrerPolicy="no-referrer"
             className="w-full h-auto [filter:drop-shadow(0_20px_35px_rgba(24,24,27,0.22))] dark:[filter:drop-shadow(0_20px_35px_rgba(0,0,0,0.55))]"
@@ -128,6 +129,7 @@ export default function CaseStudy({ project, t, lang }) {
           )}
         </div>
       </motion.div>
+      )}
 
       {/* Sections */}
       <div className="px-6 md:px-12 py-16 md:py-24">
@@ -145,7 +147,17 @@ export default function CaseStudy({ project, t, lang }) {
                 </div>
                 <div className="md:col-span-7 md:col-start-6 text-sm md:text-base leading-relaxed text-zinc-600 dark:text-zinc-300 font-light space-y-5">
                   {section.body.split('\n').map((para, j) => (
-                    <p key={j}>{para}</p>
+                    <p key={j}>
+                      {para.split(/(\*\*.*?\*\*)/g).map((chunk, k) =>
+                        chunk.startsWith('**') && chunk.endsWith('**') ? (
+                          <strong key={k} className="font-semibold text-zinc-900 dark:text-zinc-100">
+                            {chunk.slice(2, -2)}
+                          </strong>
+                        ) : (
+                          chunk
+                        )
+                      )}
+                    </p>
                   ))}
                 </div>
               </div>
@@ -208,19 +220,21 @@ export default function CaseStudy({ project, t, lang }) {
           ))}
 
           {/* Results */}
-          <motion.section {...fadeUp} className="border-t border-zinc-200 dark:border-zinc-800 pt-10 md:pt-12">
-            <span className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-8 md:mb-10">
-              {cs.results.title}
-            </span>
-            <div className="grid md:grid-cols-3 border-t border-l border-zinc-200 dark:border-zinc-800">
-              {cs.results.items.map(({ value, label }) => (
-                <div key={label} className="border-r border-b border-zinc-200 dark:border-zinc-800 px-6 py-8 md:py-10">
-                  <span className="block text-4xl md:text-5xl font-bold tracking-[-0.04em] mb-3">{value}</span>
-                  <span className="font-mono uppercase tracking-[0.05em] text-xs text-zinc-500 leading-relaxed">{label}</span>
-                </div>
-              ))}
-            </div>
-          </motion.section>
+          {cs.results && (
+            <motion.section {...fadeUp} className="border-t border-zinc-200 dark:border-zinc-800 pt-10 md:pt-12">
+              <span className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-8 md:mb-10">
+                {cs.results.title}
+              </span>
+              <div className="grid md:grid-cols-3 border-t border-l border-zinc-200 dark:border-zinc-800">
+                {cs.results.items.map(({ value, label }) => (
+                  <div key={label} className="border-r border-b border-zinc-200 dark:border-zinc-800 px-6 py-8 md:py-10">
+                    <span className="block text-4xl md:text-5xl font-bold tracking-[-0.04em] mb-3">{value}</span>
+                    <span className="font-mono uppercase tracking-[0.05em] text-xs text-zinc-500 leading-relaxed">{label}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
+          )}
         </div>
       </div>
 
