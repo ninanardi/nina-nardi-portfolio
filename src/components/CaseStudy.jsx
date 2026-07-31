@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import CreatusTokens from './CreatusTokens';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -116,12 +117,16 @@ export default function CaseStudy({ project, t, lang }) {
       {!cs.hideCover && (
       <motion.div {...fadeUp} className="px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
-          <img
-            src={cs.coverImage || project.image}
-            alt={project.title.replace('\n', ' ')}
-            referrerPolicy="no-referrer"
-            className="w-full h-auto [filter:drop-shadow(0_20px_35px_rgba(24,24,27,0.22))] dark:[filter:drop-shadow(0_20px_35px_rgba(0,0,0,0.55))]"
-          />
+          {cs.coverComponent === 'creatus-tokens' ? (
+            <CreatusTokens lang={lang} />
+          ) : (
+            <img
+              src={cs.coverImage || project.image}
+              alt={project.title.replace('\n', ' ')}
+              referrerPolicy="no-referrer"
+              className="w-full h-auto [filter:drop-shadow(0_20px_35px_rgba(24,24,27,0.22))] dark:[filter:drop-shadow(0_20px_35px_rgba(0,0,0,0.55))]"
+            />
+          )}
           {cs.coverCaption && (
             <p className="mt-4 font-mono text-xs text-zinc-400 leading-relaxed">
               {cs.coverCaption}

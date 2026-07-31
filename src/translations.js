@@ -93,14 +93,6 @@ export const translations = {
                 body: "O protótipo responde à pergunta de pesquisa em três frentes. Abstração e visualização de dados: o Dashboard converte uma gama de pontos de dados complexos em indicadores de alto nível, como o score de Saúde de Segurança, resolvendo a dor do cliente de enfrentar relatórios densos. Tradução de informações técnicas: o modal de Descobertas não apenas identifica a vulnerabilidade, mas a contextualiza em \"Por que importa para você\" e \"O que recomendamos fazer\". Colaboração e imediatismo: o módulo de Chat supera as barreiras processuais de comunicação que geravam o silêncio durante o serviço.\nPara uma V2, o roadmap segue por prioridade: primeiro as telas de papel administrativo, essenciais para tornar a plataforma funcional; depois a visualização de relatórios de serviços anteriores, para o cliente acompanhar sua evolução ao longo do tempo; em seguida, a função de salvar publicações do feed; e por fim, uma versão mobile responsiva."
               }
             ],
-            results: {
-              title: "Resultados",
-              items: [
-                { value: "1 score", label: "Saúde de Segurança substitui a listagem técnica por um indicador único" },
-                { value: "3 camadas", label: "risco de negócio, contextualização e evidência técnica" },
-                { value: "1 canal", label: "chat contínuo elimina o silêncio durante a execução" }
-              ]
-            },
             backToProjects: "Voltar aos projetos",
             nextLabel: "Próximo projeto"
           }
@@ -121,8 +113,7 @@ export const translations = {
             role: "Product Designer",
             sector: "Segurança portuária B2B",
             headline: "Um design system pensado para performance em GPUI",
-            coverImage: "projects/creatus-tokens.webp",
-            coverCaption: "Documentação de tokens de cor, espaçamento, raio de borda e tipografia do design system, aplicados a um software de segurança portuária.",
+            coverComponent: "creatus-tokens",
             disclaimer: "Projeto profissional desenvolvido na Preto no Branco. Este estudo de caso descreve o processo e as decisões de design de um software de monitoramento e inspeção de contêineres para o setor de segurança portuária. Detalhes proprietários de negócio, telas específicas e dados de cliente não são exibidos aqui.",
             intro: "O software em questão é o produto carro-chefe da Preto no Branco, uma plataforma de monitoramento e inspeção de contêineres para o setor de segurança portuária, com alto volume de análises processadas por dia. A base de código foi migrada para Rust, usando a GPUI (engine de UI do Zed) na renderização, para ganhar performance em um contexto de uso intensivo.\nEssa mudança de stack exigiu estruturar um design system do zero: a v2 do produto não tinha um sistema documentado, só padrões visuais informais espalhados entre telas.",
             sections: [
@@ -252,14 +243,6 @@ export const translations = {
                 body: "The prototype answers the research question on three fronts. Data abstraction and visualization: the Dashboard converts a range of complex data points into high-level indicators, like the Security Health score, solving the client's pain of facing dense reports. Translation of technical information: the Findings modal doesn't just identify the vulnerability, it contextualizes it into \"Why it matters to you\" and \"What we recommend doing\". Collaboration and immediacy: the Chat module overcomes the procedural communication barriers that caused silence during the service.\nFor a V2, the roadmap follows this priority: first, admin-role screens, essential to make the platform functional; then, a view for past service reports, so the client can track their evolution over time; next, the ability to save feed posts; and finally, a responsive mobile version."
               }
             ],
-            results: {
-              title: "Results",
-              items: [
-                { value: "1 score", label: "Security Health replaces the technical listing with a single indicator" },
-                { value: "3 layers", label: "business risk, contextualization and technical evidence" },
-                { value: "1 channel", label: "continuous chat removes the silence during execution" }
-              ]
-            },
             backToProjects: "Back to projects",
             nextLabel: "Next project"
           }
@@ -280,8 +263,7 @@ export const translations = {
             role: "Product Designer",
             sector: "B2B Port Security",
             headline: "A design system built for performance in GPUI",
-            coverImage: "projects/creatus-tokens.webp",
-            coverCaption: "Documentation of color, spacing, border radius, and typography tokens, applied to a port security software.",
+            coverComponent: "creatus-tokens",
             disclaimer: "Professional project developed at Preto no Branco. This case study describes the process and design decisions behind a container monitoring and inspection product for the port security sector. Proprietary business details, specific screens, and client data are not shown here.",
             intro: "The software in question is Preto no Branco's flagship product, a container monitoring and inspection platform for the port security sector, with a high volume of analyses processed per day. The codebase was migrated to Rust, using GPUI (Zed's UI engine) for rendering, to gain performance in a context of intensive use.\nThat stack change required structuring a design system from scratch: v2 of the product had no documented system, only informal visual patterns scattered across screens.",
             sections: [
