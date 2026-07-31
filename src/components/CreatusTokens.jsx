@@ -2,7 +2,7 @@ import React from 'react';
 import Icon, { domainIconNames } from './CreatusIcons';
 
 const card =
-  'bg-zinc-50 dark:bg-[#16191d] border border-zinc-200 dark:border-[#24282e] rounded-xl p-7 md:p-9';
+  'bg-zinc-50 dark:bg-[#16191d] border border-zinc-200 dark:border-[#24282e] p-7 md:p-9';
 const mono = 'font-mono';
 
 const colorGroups = [
@@ -102,9 +102,9 @@ const copy = {
   pt: {
     colorTitle: 'Tokens de Cor',
     colorDesc: 'Os únicos nomes de cor que o código toca. Cada um resolve para um primitivo que carrega um valor por modo de tema.',
-    light: 'Claro',
-    dark: 'Escuro',
-    coolGray: 'Cinza-azulado',
+    light: 'Light',
+    dark: 'Dark',
+    coolGray: 'Cool Gray',
     spacingTitle: 'Espaçamento',
     spacingDesc: <>Uma escala baseada em 4&nbsp;px. Os tokens <code className={mono}>padding/*</code> e <code className={mono}>gap/*</code> referenciam os passos numerados.</>,
     radiusTitle: 'Raio',
@@ -149,18 +149,18 @@ export default function CreatusTokens({ lang }) {
             title={c.colorTitle}
             desc={c.colorDesc}
           />
-          <div className="flex gap-5 font-mono text-[11px] text-zinc-500 dark:text-zinc-400 shrink-0 pt-1">
+          <div className="flex gap-5 font-mono text-[11px] leading-none text-zinc-500 dark:text-zinc-400 shrink-0 pt-1">
             <div className="flex items-center gap-1.5">
-              <span className="w-[11px] h-[11px] rounded-sm bg-white border border-zinc-400 dark:border-zinc-600" />
-              {c.light}
+              <span className="w-[11px] h-[11px] shrink-0 bg-white border border-zinc-400 dark:border-zinc-600" />
+              <span>{c.light}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-[11px] h-[11px] rounded-sm bg-[#161616] border border-zinc-400 dark:border-zinc-600" />
-              {c.dark}
+              <span className="w-[11px] h-[11px] shrink-0 bg-[#161616] border border-zinc-400 dark:border-zinc-600" />
+              <span>{c.dark}</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span className="w-[11px] h-[11px] rounded-sm bg-[#21272a] border border-zinc-400 dark:border-zinc-600" />
-              {c.coolGray}
+              <span className="w-[11px] h-[11px] shrink-0 bg-[#21272a] border border-zinc-400 dark:border-zinc-600" />
+              <span>{c.coolGray}</span>
             </div>
           </div>
         </div>
@@ -173,9 +173,9 @@ export default function CreatusTokens({ lang }) {
               {g.rows.map((r) => (
                 <div key={r.token} className="flex items-center gap-3 py-1">
                   <div className="flex gap-[3px] shrink-0">
-                    <span className="w-[15px] h-[15px] rounded-sm border border-zinc-300 dark:border-[#3a4148]" style={{ background: r.a }} />
-                    <span className="w-[15px] h-[15px] rounded-sm border border-zinc-300 dark:border-[#3a4148]" style={{ background: r.b }} />
-                    <span className="w-[15px] h-[15px] rounded-sm border border-zinc-300 dark:border-[#3a4148]" style={{ background: r.c }} />
+                    <span className="w-[15px] h-[15px] border border-zinc-300 dark:border-[#3a4148]" style={{ background: r.a }} />
+                    <span className="w-[15px] h-[15px] border border-zinc-300 dark:border-[#3a4148]" style={{ background: r.b }} />
+                    <span className="w-[15px] h-[15px] border border-zinc-300 dark:border-[#3a4148]" style={{ background: r.c }} />
                   </div>
                   <div className="font-mono text-[12.5px] text-zinc-700 dark:text-zinc-200">{r.token}</div>
                   <div className="flex-1" />
@@ -298,15 +298,15 @@ export default function CreatusTokens({ lang }) {
           desc={c.depthDesc}
         />
         <div className="grid md:grid-cols-3 gap-5">
-          <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] rounded-lg p-[18px] pb-5 flex flex-col gap-2 shadow-[0_10px_24px_rgba(24,24,27,0.12)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.55)]">
+          <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] p-[18px] pb-5 flex flex-col gap-2 shadow-[0_10px_24px_rgba(24,24,27,0.12)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.55)]">
             <span className="font-mono text-xs text-zinc-900 dark:text-zinc-100">Shadows/Menu</span>
             <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">{c.menusDropdowns}</span>
           </div>
-          <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] rounded-lg p-[18px] pb-5 flex flex-col gap-2 shadow-[0_10px_24px_rgba(24,24,27,0.06)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
-            <span className="font-mono text-xs text-zinc-900 dark:text-zinc-100">Shadows/Menu (Transparent)</span>
+          <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] p-[18px] pb-5 flex flex-col gap-2 shadow-[0_10px_24px_rgba(24,24,27,0.06)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
+            <span className="font-mono text-xs text-zinc-900 dark:text-zinc-100">Shadows/Menu (Overlay)</span>
             <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">{c.menusOverImagery}</span>
           </div>
-          <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] rounded-lg p-[18px] pb-5 flex flex-col gap-2 shadow-[0_0_0_2px_#00a862]">
+          <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] p-[18px] pb-5 flex flex-col gap-2 shadow-[0_0_0_2px_#00a862]">
             <span className="font-mono text-xs text-zinc-900 dark:text-zinc-100">Focus Ring/Brand</span>
             <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">{c.keyboardNav}</span>
           </div>
@@ -328,7 +328,7 @@ export default function CreatusTokens({ lang }) {
           {domainIconNames.map((name) => (
             <div
               key={name}
-              className="aspect-square flex items-center justify-center border border-zinc-200 dark:border-[#2c3238] rounded-md text-zinc-600 dark:text-zinc-300"
+              className="aspect-square flex items-center justify-center border border-zinc-200 dark:border-[#2c3238] text-zinc-600 dark:text-zinc-300"
             >
               <Icon name={name} size={24} />
             </div>
