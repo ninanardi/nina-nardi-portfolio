@@ -57,12 +57,76 @@ const radiusTokens = [
   { token: 'radius/xl', ref: 'shape/24' },
 ];
 
-const voiceRules = [
+const voiceRulesEn = [
   { n: '01', rule: 'State, not emotion', yes: '“Cargo released”', no: '“Great news, nothing wrong here!”' },
   { n: '02', rule: 'Infinitive or imperative, never first person', yes: '“Sign in to the system”', no: '“Let’s sign in”' },
   { n: '03', rule: 'Deliberate vocabulary', yes: '“3 containers awaiting inspection.”', no: '“3 items awaiting review.”' },
   { n: '04', rule: 'No emphatic punctuation, never celebrate', yes: '“No divergence detected.”', no: '“All clear! No problems found!”' },
 ];
+
+const voiceRulesPt = [
+  { n: '01', rule: 'Estado, não emoção', yes: '“Carga liberada”', no: '“Ótima notícia, nada de errado aqui!”' },
+  { n: '02', rule: 'Infinitivo ou imperativo, nunca primeira pessoa', yes: '“Entrar no sistema”', no: '“Vamos entrar”' },
+  { n: '03', rule: 'Vocabulário deliberado', yes: '“3 contêineres aguardando inspeção.”', no: '“3 itens aguardando revisão.”' },
+  { n: '04', rule: 'Sem pontuação enfática, nunca comemorar', yes: '“Nenhuma divergência detectada.”', no: '“Tudo certo! Nenhum problema encontrado!”' },
+];
+
+const copy = {
+  en: {
+    colorTitle: 'Color Tokens',
+    colorDesc: 'The only colour names the codebase touches. Each one resolves to a primitive that carries a value per theme mode.',
+    light: 'Light',
+    dark: 'Dark',
+    coolGray: 'Cool Gray',
+    spacingTitle: 'Spacing',
+    spacingDesc: <>A 4&nbsp;px based scale. <code className={mono}>padding/*</code> and <code className={mono}>gap/*</code> tokens reference the numbered steps.</>,
+    radiusTitle: 'Radius',
+    radiusDesc: <>Corner values from 2 to 40&nbsp;px, applied through named <code className={mono}>radius/*</code> tokens. <code className={mono}>radius/surface</code> sits outside the scale — a surface is a concept, not a size.</>,
+    typographyTitle: 'Typography',
+    typographyDesc: 'IBM Plex Sans for interface text and IBM Plex Mono for data. Four weights across headings and body.',
+    depthTitle: 'Depth',
+    depthDesc: 'Three effects instead of an elevation scale. Hierarchy is built with background, border and spacing tokens.',
+    menusDropdowns: 'Menus and dropdowns.',
+    menusOverImagery: 'Menus over imagery.',
+    keyboardNav: 'Keyboard navigation.',
+    iconTitle: 'Iconography',
+    iconDesc: 'Carbon icon set. Outline style at a consistent stroke weight.',
+    iconCount: '585+ icons',
+    voiceTitle: 'Voice & Tone',
+    voiceDesc: 'Four writing rules applied to every string in the interface. Factual register, operational vocabulary.',
+    ruleCol: 'Rule',
+    writeCol: 'Write',
+    avoidCol: 'Avoid',
+    voiceRules: voiceRulesEn,
+  },
+  pt: {
+    colorTitle: 'Tokens de Cor',
+    colorDesc: 'Os únicos nomes de cor que o código toca. Cada um resolve para um primitivo que carrega um valor por modo de tema.',
+    light: 'Claro',
+    dark: 'Escuro',
+    coolGray: 'Cinza-azulado',
+    spacingTitle: 'Espaçamento',
+    spacingDesc: <>Uma escala baseada em 4&nbsp;px. Os tokens <code className={mono}>padding/*</code> e <code className={mono}>gap/*</code> referenciam os passos numerados.</>,
+    radiusTitle: 'Raio',
+    radiusDesc: <>Valores de canto de 2 a 40&nbsp;px, aplicados por tokens nomeados <code className={mono}>radius/*</code>. O <code className={mono}>radius/surface</code> fica fora da escala — uma superfície é um conceito, não um tamanho.</>,
+    typographyTitle: 'Tipografia',
+    typographyDesc: 'IBM Plex Sans para texto de interface e IBM Plex Mono para dados. Quatro pesos entre títulos e corpo de texto.',
+    depthTitle: 'Profundidade',
+    depthDesc: 'Três efeitos no lugar de uma escala de elevação. A hierarquia é construída com tokens de background, borda e espaçamento.',
+    menusDropdowns: 'Menus e dropdowns.',
+    menusOverImagery: 'Menus sobre imagens.',
+    keyboardNav: 'Navegação por teclado.',
+    iconTitle: 'Iconografia',
+    iconDesc: 'Conjunto de ícones Carbon. Estilo outline com espessura de traço consistente.',
+    iconCount: '585+ ícones',
+    voiceTitle: 'Tom de Voz',
+    voiceDesc: 'Quatro regras de escrita aplicadas a toda string da interface. Registro factual, vocabulário operacional.',
+    ruleCol: 'Regra',
+    writeCol: 'Escrever',
+    avoidCol: 'Evitar',
+    voiceRules: voiceRulesPt,
+  },
+};
 
 function SectionHeader({ title, desc }) {
   return (
@@ -73,7 +137,8 @@ function SectionHeader({ title, desc }) {
   );
 }
 
-export default function CreatusTokens() {
+export default function CreatusTokens({ lang }) {
+  const c = copy[lang === 'pt' ? 'pt' : 'en'];
   return (
     <div className="flex flex-col gap-6">
 
@@ -81,21 +146,21 @@ export default function CreatusTokens() {
       <div className={card}>
         <div className="flex items-start justify-between gap-10 mb-2">
           <SectionHeader
-            title="Color tokens"
-            desc="The only colour names the codebase touches. Each one resolves to a primitive that carries a value per theme mode."
+            title={c.colorTitle}
+            desc={c.colorDesc}
           />
           <div className="flex gap-5 font-mono text-[11px] text-zinc-500 dark:text-zinc-400 shrink-0 pt-1">
             <div className="flex items-center gap-1.5">
               <span className="w-[11px] h-[11px] rounded-sm bg-white border border-zinc-400 dark:border-zinc-600" />
-              Light
+              {c.light}
             </div>
             <div className="flex items-center gap-1.5">
               <span className="w-[11px] h-[11px] rounded-sm bg-[#161616] border border-zinc-400 dark:border-zinc-600" />
-              Dark
+              {c.dark}
             </div>
             <div className="flex items-center gap-1.5">
               <span className="w-[11px] h-[11px] rounded-sm bg-[#21272a] border border-zinc-400 dark:border-zinc-600" />
-              Cool Gray
+              {c.coolGray}
             </div>
           </div>
         </div>
@@ -126,8 +191,8 @@ export default function CreatusTokens() {
       <div className="grid md:grid-cols-2 gap-6">
         <div className={`${card} flex flex-col`}>
           <SectionHeader
-            title="Spacing"
-            desc={<>A 4&nbsp;px based scale. <code className={mono}>padding/*</code> and <code className={mono}>gap/*</code> tokens reference the numbered steps.</>}
+            title={c.spacingTitle}
+            desc={c.spacingDesc}
           />
           <div className="flex-1 flex flex-col justify-center gap-2">
             {spacingRows.map((s) => (
@@ -149,8 +214,8 @@ export default function CreatusTokens() {
 
         <div className={`${card} flex flex-col`}>
           <SectionHeader
-            title="Radius"
-            desc={<>Corner values from 2 to 40&nbsp;px, applied through named <code className={mono}>radius/*</code> tokens. <code className={mono}>radius/surface</code> sits outside the scale — a surface is a concept, not a size.</>}
+            title={c.radiusTitle}
+            desc={c.radiusDesc}
           />
           <div className="flex-1 flex items-center">
             <div className="grid grid-cols-6 gap-3 w-full">
@@ -179,8 +244,8 @@ export default function CreatusTokens() {
       {/* Typography */}
       <div className={card}>
         <SectionHeader
-          title="Typography"
-          desc="IBM Plex Sans for interface text and IBM Plex Mono for data. Four weights across headings and body."
+          title={c.typographyTitle}
+          desc={c.typographyDesc}
         />
         <div className="grid md:grid-cols-2 gap-12">
           <div className="flex flex-col">
@@ -229,21 +294,21 @@ export default function CreatusTokens() {
       {/* Depth */}
       <div className={card}>
         <SectionHeader
-          title="Depth"
-          desc="Three effects instead of an elevation scale. Hierarchy is built with background, border and spacing tokens."
+          title={c.depthTitle}
+          desc={c.depthDesc}
         />
         <div className="grid md:grid-cols-3 gap-5">
           <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] rounded-lg p-[18px] pb-5 flex flex-col gap-2 shadow-[0_10px_24px_rgba(24,24,27,0.12)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.55)]">
             <span className="font-mono text-xs text-zinc-900 dark:text-zinc-100">Shadows/Menu</span>
-            <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">Menus and dropdowns.</span>
+            <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">{c.menusDropdowns}</span>
           </div>
           <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] rounded-lg p-[18px] pb-5 flex flex-col gap-2 shadow-[0_10px_24px_rgba(24,24,27,0.06)] dark:shadow-[0_10px_24px_rgba(0,0,0,0.3)]">
             <span className="font-mono text-xs text-zinc-900 dark:text-zinc-100">Shadows/Menu (Transparent)</span>
-            <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">Menus over imagery.</span>
+            <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">{c.menusOverImagery}</span>
           </div>
           <div className="bg-white dark:bg-[#1c2126] border border-zinc-200 dark:border-[#2c3238] rounded-lg p-[18px] pb-5 flex flex-col gap-2 shadow-[0_0_0_2px_#00a862]">
             <span className="font-mono text-xs text-zinc-900 dark:text-zinc-100">Focus Ring/Brand</span>
-            <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">Keyboard navigation.</span>
+            <span className="text-[13px] leading-relaxed text-zinc-500 dark:text-zinc-400">{c.keyboardNav}</span>
           </div>
         </div>
       </div>
@@ -252,11 +317,11 @@ export default function CreatusTokens() {
       <div className={card}>
         <div className="flex items-start justify-between gap-10 mb-8">
           <SectionHeader
-            title="Iconography"
-            desc="Carbon icon set. Outline style at a consistent stroke weight."
+            title={c.iconTitle}
+            desc={c.iconDesc}
           />
           <div className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-[#2c3238] rounded px-2.5 py-1 shrink-0">
-            585+ icons
+            {c.iconCount}
           </div>
         </div>
         <div className="grid grid-cols-5 sm:grid-cols-10 gap-2.5">
@@ -274,8 +339,8 @@ export default function CreatusTokens() {
       {/* Voice */}
       <div className={card}>
         <SectionHeader
-          title="Voice"
-          desc="Four writing rules applied to every string in the interface. Factual register, operational vocabulary."
+          title={c.voiceTitle}
+          desc={c.voiceDesc}
         />
         <table className="w-full border-collapse table-fixed">
           <colgroup>
@@ -285,13 +350,13 @@ export default function CreatusTokens() {
           </colgroup>
           <thead>
             <tr className="border-b border-zinc-200 dark:border-[#2c3238]">
-              <th className="text-left font-mono text-[10.5px] tracking-[0.1em] uppercase text-zinc-400 dark:text-zinc-500 font-normal pb-3 pr-6">Rule</th>
-              <th className="text-left font-mono text-[10.5px] tracking-[0.1em] uppercase text-zinc-400 dark:text-zinc-500 font-normal pb-3 pr-6">Write</th>
-              <th className="text-left font-mono text-[10.5px] tracking-[0.1em] uppercase text-zinc-400 dark:text-zinc-500 font-normal pb-3">Avoid</th>
+              <th className="text-left font-mono text-[10.5px] tracking-[0.1em] uppercase text-zinc-400 dark:text-zinc-500 font-normal pb-3 pr-6">{c.ruleCol}</th>
+              <th className="text-left font-mono text-[10.5px] tracking-[0.1em] uppercase text-zinc-400 dark:text-zinc-500 font-normal pb-3 pr-6">{c.writeCol}</th>
+              <th className="text-left font-mono text-[10.5px] tracking-[0.1em] uppercase text-zinc-400 dark:text-zinc-500 font-normal pb-3">{c.avoidCol}</th>
             </tr>
           </thead>
           <tbody>
-            {voiceRules.map((v) => (
+            {c.voiceRules.map((v) => (
               <tr key={v.n} className="border-b border-zinc-100 dark:border-[#23272c] last:border-b-0">
                 <td className="py-4 pr-6 align-middle">
                   <div className="flex gap-3 items-baseline">
