@@ -80,7 +80,7 @@ export default function Contact({ t, lang }) {
                   href={l.href}
                   target={l.href.startsWith('http') ? '_blank' : undefined}
                   rel="noreferrer"
-                  className="group relative border-b border-zinc-200 dark:border-zinc-800 py-6 grid grid-cols-[1fr_auto] items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors px-2 md:px-4 -mx-2 md:-mx-4"
+                  className="group relative border-b border-zinc-200 dark:border-zinc-800 py-6 grid grid-cols-[1fr_auto] items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors px-2 md:px-4 -mx-2 md:-mx-4 active:scale-[0.98] transition-transform"
                 >
                   <span className="text-lg md:text-xl font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
                     {l.value}

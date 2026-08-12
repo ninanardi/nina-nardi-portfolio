@@ -51,7 +51,7 @@ export default function Hero({ t, lang }) {
               <a
                 href="#projects"
                 onClick={(e) => { e.preventDefault(); smoothScrollToId('projects'); }}
-                className="group inline-flex items-center gap-3 px-6 py-3.5 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-mono uppercase tracking-[0.05em] text-sm hover:opacity-85 transition-opacity"
+                className="group inline-flex items-center gap-3 px-6 py-3.5 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 font-mono uppercase tracking-[0.05em] text-sm hover:opacity-85 transition-opacity active:scale-[0.96] transition-transform"
               >
                 {lang === 'pt' ? 'Ver projetos' : 'View work'}
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
@@ -59,7 +59,7 @@ export default function Hero({ t, lang }) {
               <a
                 href="#contact"
                 onClick={(e) => { e.preventDefault(); smoothScrollToId('contact'); }}
-                className="font-mono uppercase tracking-[0.05em] text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                className="font-mono uppercase tracking-[0.05em] text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors active:scale-[0.96] transition-transform inline-block"
               >
                 {lang === 'pt' ? 'Contato' : 'Contact'}
               </a>

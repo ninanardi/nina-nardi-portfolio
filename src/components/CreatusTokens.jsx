@@ -342,7 +342,8 @@ export default function CreatusTokens({ lang }) {
           title={c.voiceTitle}
           desc={c.voiceDesc}
         />
-        <table className="w-full border-collapse table-fixed">
+        {/* Table on md+, stacked cards below */}
+        <table className="hidden md:table w-full border-collapse table-fixed">
           <colgroup>
             <col style={{ width: '33.333%' }} />
             <col style={{ width: '33.333%' }} />
@@ -380,6 +381,27 @@ export default function CreatusTokens({ lang }) {
             ))}
           </tbody>
         </table>
+
+        <div className="md:hidden flex flex-col gap-6">
+          {c.voiceRules.map((v) => (
+            <div key={v.n} className="flex flex-col gap-3 pb-6 border-b border-zinc-100 dark:border-[#23272c] last:border-b-0 last:pb-0">
+              <div className="flex gap-3 items-baseline">
+                <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500 shrink-0">{v.n}</span>
+                <span className="text-[14.5px] font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">{v.rule}</span>
+              </div>
+              <div className="flex flex-col gap-2 pl-[26px]">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00a862] shrink-0" />
+                  <span className="text-sm text-zinc-700 dark:text-zinc-200 leading-snug">{v.yes}</span>
+                </div>
+                <div className="flex items-center gap-2.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 shrink-0" />
+                  <span className="text-sm text-zinc-400 dark:text-zinc-500 leading-snug">{v.no}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
     </div>

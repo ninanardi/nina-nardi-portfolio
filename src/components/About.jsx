@@ -6,8 +6,8 @@ export default function About({ t, lang }) {
 
   const tools = [
     { name: 'Figma' },
-    { name: 'Pencil' },
     { name: 'Claude Code', glyph: 'C' },
+    { name: 'Codex' },
     { name: 'GitHub' },
     { name: 'Adobe Illustrator', glyph: 'Ai' },
     { name: 'Adobe Photoshop', glyph: 'Ps' },
@@ -122,7 +122,7 @@ function ToolCard({ tool, hoveredTool, onHover, onLeave }) {
     <div
       onMouseEnter={() => onHover(tool.name)}
       onMouseLeave={onLeave}
-      className="relative bg-white dark:bg-[#09090b] aspect-square flex flex-col items-center justify-center p-4 cursor-pointer overflow-hidden"
+      className="relative bg-white dark:bg-[#09090b] aspect-square flex flex-col items-center justify-center p-4 cursor-pointer overflow-hidden active:scale-[0.97] transition-transform"
     >
       {/* Slide-up fill */}
       <div

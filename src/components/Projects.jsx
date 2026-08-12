@@ -97,10 +97,10 @@ export default function Projects({ t, lang }) {
                     }
                   }}
                   onMouseEnter={() => setHoveredId(project.id)}
-                  className="group relative cursor-pointer py-10 lg:py-12 flex items-center gap-6 lg:gap-10"
+                  className="group relative cursor-pointer py-10 lg:py-12 flex items-center gap-6 lg:gap-10 active:scale-[0.98] transition-transform"
                   style={{
                     opacity: hoveredId && hoveredId !== project.id ? 0.3 : 1,
-                    transition: 'opacity 0.35s ease',
+                    transition: 'opacity 0.35s ease, transform 0.15s ease',
                   }}
                 >
                   {/* Index */}
@@ -121,9 +121,9 @@ export default function Projects({ t, lang }) {
                   </h3>
 
                   {/* Tags */}
-                  <div className="hidden lg:flex flex-col items-end ml-auto shrink-0 gap-1.5">
+                  <div className="hidden lg:flex flex-col items-end ml-auto shrink-0 max-w-[10rem] gap-1.5">
                     {project.tags.map(tag => (
-                      <span key={tag} className="font-mono uppercase tracking-[0.05em] text-xs text-zinc-500">
+                      <span key={tag} className="font-mono uppercase tracking-[0.05em] text-xs text-zinc-500 text-right text-balance">
                         {tag}
                       </span>
                     ))}
@@ -213,7 +213,7 @@ function MobileCard({ project, index, onClick }) {
         hidden: { opacity: 0, y: 28 },
         show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
       }}
-      className="group cursor-pointer"
+      className="group cursor-pointer active:scale-[0.98] transition-transform"
       role="button"
       tabIndex={0}
       aria-haspopup={project.caseStudy ? undefined : 'dialog'}
@@ -288,7 +288,7 @@ function ProjectModal({ project, onClose, lang }) {
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 24 }}
+        exit={{ opacity: 0, y: 10 }}
         transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
         className="relative w-full max-w-7xl bg-white dark:bg-zinc-900 dark:border dark:border-zinc-800 overflow-hidden shadow-2xl flex flex-col h-[100dvh] md:h-[85vh]"
       >
@@ -300,7 +300,7 @@ function ProjectModal({ project, onClose, lang }) {
           <button
             ref={closeRef}
             onClick={onClose}
-            className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center border-l border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 transition-colors"
+            className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center border-l border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 transition-colors active:scale-[0.96] transition-transform"
             aria-label={lang === 'pt' ? 'Fechar' : 'Close'}
           >
             <span className="text-xl leading-none">×</span>

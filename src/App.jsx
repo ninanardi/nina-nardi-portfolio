@@ -97,7 +97,7 @@ export default function App() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             onClick={() => smoothScrollTo(0)}
-            className="fixed bottom-6 right-6 z-40 w-12 h-12 bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border border-zinc-900 dark:border-white shadow-lg hover:opacity-85 transition-opacity flex items-center justify-center font-mono uppercase tracking-[0.05em]"
+            className="fixed bottom-6 right-6 z-40 w-12 h-12 bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border border-zinc-900 dark:border-white shadow-lg hover:opacity-85 transition-opacity active:scale-[0.96] transition-transform flex items-center justify-center font-mono uppercase tracking-[0.05em]"
             aria-label="Back to top"
           >
             <span className="text-lg">↑</span>

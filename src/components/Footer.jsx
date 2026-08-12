@@ -15,7 +15,7 @@ export default function Footer({ lang }) {
             <a href="https://github.com/ninanardi" target="_blank" rel="noreferrer" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">GitHub</a>
             <a href="mailto:ninanardiwork@gmail.com" className="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Email</a>
           </div>
-          <div className="md:text-right md:pr-20">
+          <div className="md:text-right">
             <span className="text-sm leading-none align-middle">©</span> 2026 Nina Nardi
           </div>
         </div>
