@@ -5,7 +5,7 @@ export const translations = {
       description: "Product Designer focada em Sistemas de Design e Interação. Traduzo fluxos complexos em interfaces consistentes e escaláveis. Priorizo clareza funcional e atuo na interseção entre design e tecnologia."
     },
     about: {
-      title: "SOBRE MIM",
+      title: "Sobre mim",
       description: "Product Designer focada em Sistemas de Design e Interação. Atuo na tradução de fluxos complexos em interfaces consistentes e escaláveis, priorizando clareza funcional em ecossistemas de produto. Trabalho na interseção entre design e tecnologia, com familiaridade em desenvolvimento frontend, QA e IA aplicada à construção de produtos.",
       experience: [
         {
@@ -29,7 +29,7 @@ export const translations = {
       ]
     },
     projects: {
-      title: "TRABALHOS",
+      title: "Trabalhos",
       subtitle: "Projetos nos quais o design ajudou a solucionar problemas de negócios.",
       items: [
         { id: 1, title: "Sistema de Segurança Portuária", image: "projects/port-security-modal-light.webp", imageHover: "projects/port-security-hover-light.webp", description: "Plataforma de segurança portuária que integra visão computacional, inteligência artificial e análise de imagens para inspeção e rastreabilidade de cargas em tempo real.\nO redesign do produto envolveu reestruturar a arquitetura de módulos e desenvolver novas features para um ambiente onde a densidade de informação e a precisão operacional precisam coexistir.", tags: ["Redesign", "Design System", "Expansão de Features"] },
@@ -77,8 +77,8 @@ export const translations = {
                   alt: "Modal de uma descoberta: risco de negócio, recomendação e evidência técnica em camadas separadas.",
                   notes: [
                     { title: "Identificação", body: "Esse ID é advindo do CVE (Common Vulnerabilities and Exposures), um banco de dados reconhecido internacionalmente, que lista falhas e vulnerabilidades de segurança cibernética." },
-                    { title: "Contexto e Impacto", body: "As seções 'Por que isso importa' e 'Recomendação' foram desenhadas para o cliente leigo. Aqui, traduzimos o risco técnico em impacto financeiro. É a informação que se precisa para priorizar demandas e autorizar a correção." },
-                    { title: "Evidência Técnica", body: "Essa seção é direcionada para o profissional de TI da empresa. Ele não precisa da 'tradução', ele precisa da prova técnica para executar a correção. Ao colocar o Impacto e a Evidência na mesma página, a plataforma alinha a expectativa da diretoria com a execução técnica." }
+                    { title: "Contexto e Impacto", body: "As seções “Por que isso importa” e “Recomendação” foram desenhadas para o cliente leigo. Aqui, traduzimos o risco técnico em impacto financeiro. É a informação que se precisa para priorizar demandas e autorizar a correção." },
+                    { title: "Evidência Técnica", body: "Essa seção é direcionada para o profissional de TI da empresa. Ele não precisa da “tradução”, ele precisa da prova técnica para executar a correção. Ao colocar o Impacto e a Evidência na mesma página, a plataforma alinha a expectativa da diretoria com a execução técnica." }
                   ]
                 }
               },
@@ -102,7 +102,7 @@ export const translations = {
         {
           id: 4,
           slug: "creatus-design-system",
-          title: "CREATUS DS",
+          title: "Creatus DS",
           image: "projects/creatus-modal.webp",
           imageHover: "projects/creatus-hover.webp",
           description: "Estruturando um design system do zero para uma interface construída em GPUI: como Carbon (IBM) e a identidade visual herdada do produto se combinaram para sustentar uma experiência de alta densidade.",
@@ -146,7 +146,7 @@ export const translations = {
       ]
     },
     contact: {
-      title: "VAMOS\nCONVERSAR.",
+      title: "Vamos\nconversar.",
       subtitle: "Seja para um projeto, uma parceria ou só para trocar ideia.",
     }
   },
@@ -156,7 +156,7 @@ export const translations = {
       description: "Product Designer focused on Design Systems and Interaction. I translate complex flows into consistent, scalable interfaces. I prioritize functional clarity and work at the intersection of design and technology."
     },
     about: {
-      title: "ABOUT ME",
+      title: "About me",
       description: "Product Designer focused on Design Systems and Interaction. I translate complex flows into consistent, scalable interfaces, prioritizing functional clarity in product ecosystems. I work at the intersection of design and technology, with familiarity in frontend development, QA, and the use of AI applied to product building.",
       experience: [
         {
@@ -180,7 +180,7 @@ export const translations = {
       ]
     },
     projects: {
-      title: "WORK",
+      title: "Work",
       subtitle: "Projects in which design\nhelped solve business problems.",
       items: [
         { id: 1, title: "Port Security System", image: "projects/port-security-modal-light.webp", imageHover: "projects/port-security-hover-light.webp", description: "Port security platform integrating computer vision, artificial intelligence, and image analysis for real-time cargo inspection and traceability.\nThe product redesign involved restructuring the module architecture and developing new features for an environment where information density and operational precision must coexist.", tags: ["Redesign", "Design System", "Feature Expansion"] },
@@ -202,19 +202,19 @@ export const translations = {
             coverImage: "projects/wss-dashboard-cover.webp",
             coverCaption: "Dashboard with a Security Health score, a vulnerability breakdown by category, and a timeline of service actions.",
             disclaimer: "Academic project, developed as a thesis in Communication Design. WSS Security is a real partner company I met through mentorship, who provided the business context for this study. Vulnerabilities, metrics, user names, and other content shown on the screens are fictional, created exclusively for educational and prototyping purposes. No real client or security information from WSS Security is shown here.",
-            intro: "WSS Security sells pentesting, monitoring, and security training, but the final report reached the client as a dense document full of technical terms that never turned into decisions.\nThe question that guided the project: how does a digital platform translate technical success into business value for someone who doesn't understand security?",
+            intro: "WSS Security sells pentesting, monitoring, and security training, but the final report reached the client as a dense document full of technical terms that never turned into decisions.\nThe question that guided the project: how does a digital platform translate technical success into business value for someone who doesn’t understand security?",
             sections: [
               {
                 title: "The problem",
-                body: "WSS Security sells pentesting, monitoring, and information security training, but faced a problem that wasn't technical, it was about communication. The final report of a service reached the client as a dense document, full of terms like CVE, exposure, remediation. For a manager with no technical background, that didn't turn into a decision, it turned into frustration.\nI interviewed WSS's CEO directly. The sentence that defined the project: the company \"strives to adapt the communication process to the client's demand\", but in practice the flow was just kickoff, report delivery, debriefing meeting. No contact in the middle of the process. The client paid and stayed in the dark until the end.\nThat gap led to the question that guided the project: how does a digital platform translate technical success into business value for someone who doesn't understand security?"
+                body: "WSS Security sells pentesting, monitoring, and information security training, but faced a problem that wasn’t technical, it was about communication. The final report of a service reached the client as a dense document, full of terms like CVE, exposure, remediation. For a manager with no technical background, that didn’t turn into a decision, it turned into frustration.\nI interviewed WSS’s CEO directly. The sentence that defined the project: the company \"strives to adapt the communication process to the client’s demand\", but in practice the flow was just kickoff, report delivery, debriefing meeting. No contact in the middle of the process. The client paid and stayed in the dark until the end.\nThat gap led to the question that guided the project: how does a digital platform translate technical success into business value for someone who doesn’t understand security?"
               },
               {
                 title: "Who feels this pain",
-                body: "I built the persona Carla, CEO of a mid-sized company, results-oriented, without technical IT vocabulary, but responsible for justifying the security investment to the board. Mapping her journey across the service, the biggest friction point wasn't the final delivery, it was the silence during the execution of the test. With no visibility into progress, it felt like paying for something invisible.\nThat finding shifted the project's priority: the product couldn't just be \"a prettier report\". It had to be a continuous communication channel."
+                body: "I built the persona Carla, CEO of a mid-sized company, results-oriented, without technical IT vocabulary, but responsible for justifying the security investment to the board. Mapping her journey across the service, the biggest friction point wasn’t the final delivery, it was the silence during the execution of the test. With no visibility into progress, it felt like paying for something invisible.\nThat finding shifted the project’s priority: the product couldn’t just be \"a prettier report\". It had to be a continuous communication channel."
               },
               {
                 title: "Process",
-                body: "I ran a heuristic analysis of three direct competitors (PlexTrac, Darwin Attack, Tenable) against Nielsen's 10 heuristics before designing any screen. This established, for example, that filters taking up excessive vertical space was a recurring market mistake to avoid. I used Jesse James Garrett's 5 elements model to structure the project from strategy to surface, with sitemap and interaction flow validated before moving to wireframes."
+                body: "I ran a heuristic analysis of three direct competitors (PlexTrac, Darwin Attack, Tenable) against Nielsen’s 10 heuristics before designing any screen. This established, for example, that filters taking up excessive vertical space was a recurring market mistake to avoid. I used Jesse James Garrett’s 5 elements model to structure the project from strategy to surface, with sitemap and interaction flow validated before moving to wireframes."
               },
               {
                 title: "Design decisions",
@@ -222,41 +222,41 @@ export const translations = {
               },
               {
                 title: "Layered findings",
-                body: "Each row of the \"Findings\" table opens a modal that separates the information into three layers: first why this matters for the business (not for the technical team), then what we recommend doing, and only then the raw technical evidence. It's the same logic as the Executive Summary WSS already used in reports, only applied piece by piece, at the moment the data appears, not all at once in a long, dense document.",
+                body: "Each row of the \"Findings\" table opens a modal that separates the information into three layers: first why this matters for the business (not for the technical team), then what we recommend doing, and only then the raw technical evidence. It’s the same logic as the Executive Summary WSS already used in reports, only applied piece by piece, at the moment the data appears, not all at once in a long, dense document.",
                 annotated: {
                   src: "projects/wss-modal.webp",
                   alt: "A finding modal: business risk, recommendation, and technical evidence in separate layers.",
                   notes: [
                     { title: "Identification", body: "This ID comes from CVE (Common Vulnerabilities and Exposures), an internationally recognized database listing cybersecurity flaws and vulnerabilities." },
-                    { title: "Context and Impact", body: "The 'Why this matters' and 'Recommendation' sections were designed for the non-technical client. Here, we translate technical risk into financial impact, the information needed to prioritize demands and authorize the fix." },
-                    { title: "Technical Evidence", body: "This section targets the company's IT professional. They don't need the 'translation', they need the technical proof to execute the fix. By putting Impact and Evidence on the same page, the platform aligns the board's expectations with technical execution." }
+                    { title: "Context and Impact", body: "The “Why this matters” and “Recommendation” sections were designed for the non-technical client. Here, we translate technical risk into financial impact, the information needed to prioritize demands and authorize the fix." },
+                    { title: "Technical Evidence", body: "This section targets the company’s IT professional. They don’t need the “translation”, they need the technical proof to execute the fix. By putting Impact and Evidence on the same page, the platform aligns the board’s expectations with technical execution." }
                   ]
                 }
               },
               {
                 title: "Continuous chat",
-                body: "Since the biggest pain point was the silence during execution, the Chat module (inspired by ClickUp and Discord) allows thematic channels per critical vulnerability and one-click video calls, without swapping e-mails to escalate an urgent problem. This way Carla doesn't have to wait for the final report to know what's going on.\nThere was also a conscious scope cut: I left the WSS admin view (a panel for the internal team to publish content and register clients) noted as a future evolution, to focus the MVP entirely on the client experience.",
+                body: "Since the biggest pain point was the silence during execution, the Chat module (inspired by ClickUp and Discord) allows thematic channels per critical vulnerability and one-click video calls, without swapping e-mails to escalate an urgent problem. This way Carla doesn’t have to wait for the final report to know what’s going on.\nThere was also a conscious scope cut: I left the WSS admin view (a panel for the internal team to publish content and register clients) noted as a future evolution, to focus the MVP entirely on the client experience.",
                 images: [
                   { src: "projects/wss-chat.webp", caption: "Chat module with thematic channels, participants, and quick actions like Report Incident." }
                 ]
               },
               {
                 title: "Result",
-                body: "The prototype answers the research question on three fronts. Data abstraction and visualization: the Dashboard converts a range of complex data points into high-level indicators, like the Security Health score, solving the client's pain of facing dense reports. Translation of technical information: the Findings modal doesn't just identify the vulnerability, it contextualizes it into \"Why it matters to you\" and \"What we recommend doing\". Collaboration and immediacy: the Chat module overcomes the procedural communication barriers that caused silence during the service.\nFor a V2, the roadmap follows this priority: first, admin-role screens, essential to make the platform functional; then, a view for past service reports, so the client can track their evolution over time; next, the ability to save feed posts; and finally, a responsive mobile version."
+                body: "The prototype answers the research question on three fronts. Data abstraction and visualization: the Dashboard converts a range of complex data points into high-level indicators, like the Security Health score, solving the client’s pain of facing dense reports. Translation of technical information: the Findings modal doesn’t just identify the vulnerability, it contextualizes it into \"Why it matters to you\" and \"What we recommend doing\". Collaboration and immediacy: the Chat module overcomes the procedural communication barriers that caused silence during the service.\nFor a V2, the roadmap follows this priority: first, admin-role screens, essential to make the platform functional; then, a view for past service reports, so the client can track their evolution over time; next, the ability to save feed posts; and finally, a responsive mobile version."
               }
             ],
             backToProjects: "Back to projects",
             nextLabel: "Next project"
           }
         },
-        { id: 3, title: "PCP / Aerospace Components Department", image: "projects/pcp-aerospace-modal-light.webp", imageHover: "projects/pcp-aerospace-hover-light.webp", description: "B2B platform built for the company's aeronautical components department, focused on production planning and control. The system integrates demand management, inventory visibility, and production sequencing across interconnected modules, providing a unified view of logistics and operational processes.\nThe design challenge was translating complex industrial data flows into clear, functional interfaces for different user profiles (from financial managers to production planners), while maintaining consistency and usability in a high-criticality operational environment.", tags: ["Interface Design", "Product"] },
+        { id: 3, title: "PCP / Aerospace Components Department", image: "projects/pcp-aerospace-modal-light.webp", imageHover: "projects/pcp-aerospace-hover-light.webp", description: "B2B platform built for the company’s aeronautical components department, focused on production planning and control. The system integrates demand management, inventory visibility, and production sequencing across interconnected modules, providing a unified view of logistics and operational processes.\nThe design challenge was translating complex industrial data flows into clear, functional interfaces for different user profiles (from financial managers to production planners), while maintaining consistency and usability in a high-criticality operational environment.", tags: ["Interface Design", "Product"] },
         {
           id: 4,
           slug: "creatus-design-system",
-          title: "CREATUS DS",
+          title: "Creatus DS",
           image: "projects/creatus-modal.webp",
           imageHover: "projects/creatus-hover.webp",
-          description: "Structuring a design system from scratch for an interface built in GPUI: how Carbon (IBM) and the product's inherited visual identity combined to support a high-density experience.",
+          description: "Structuring a design system from scratch for an interface built in GPUI: how Carbon (IBM) and the product’s inherited visual identity combined to support a high-density experience.",
           tags: ["Design System", "Component Documentation", "Product Design"],
           caseStudy: {
             eyebrow: "Case study",
@@ -267,7 +267,7 @@ export const translations = {
             headline: "A design system built for performance in GPUI",
             coverComponent: "creatus-tokens",
             disclaimer: "Professional project developed at Preto no Branco. This case study describes the process and design decisions behind a container monitoring and inspection product for the port security sector. Proprietary business details, specific screens, and client data are not shown here.",
-            intro: "The software in question is Preto no Branco's flagship product, a container monitoring and inspection platform for the port security sector, with a high volume of analyses processed per day. The codebase was migrated to Rust, using GPUI (Zed's UI engine) for rendering, to gain performance in a context of intensive use.\nThat stack change required structuring a design system from scratch: v2 of the product had no documented system, only informal visual patterns scattered across screens.",
+            intro: "The software in question is Preto no Branco’s flagship product, a container monitoring and inspection platform for the port security sector, with a high volume of analyses processed per day. The codebase was migrated to Rust, using GPUI (Zed’s UI engine) for rendering, to gain performance in a context of intensive use.\nThat stack change required structuring a design system from scratch: v2 of the product had no documented system, only informal visual patterns scattered across screens.",
             sections: [
               {
                 title: "The context",
@@ -275,19 +275,19 @@ export const translations = {
               },
               {
                 title: "The decision: visual continuity and Carbon",
-                body: "Combining two design system references came from two different constraints, one technical and one product-related.\nCarbon (IBM) solved the technical constraint. GPUI renders the interface directly on the GPU, so components with many visual layers, effects, or complex animations cost a lot in performance, since every frame has to recalculate geometry and repaint. Carbon was designed for that kind of scenario, dense, enterprise interfaces with a large volume of data displayed and updated. Its principles prioritize simple, predictable visual states and information density without losing legibility.\nAn internal design system, used as a reference for visual continuity, solved the product constraint. The product's v2 already had a visual identity recognized by recurring users, port operation teams who use the system daily. Changing the technical stack couldn't mean changing the visual language overnight, that would break the familiarity already built. The system's icons come from Carbon's library, extending that influence to the visual layer as well, not just the structural one.\nThe design decision came from an engineering constraint. The design system work was reconciling both influences without generating visual or behavioral inconsistency."
+                body: "Combining two design system references came from two different constraints, one technical and one product-related.\nCarbon (IBM) solved the technical constraint. GPUI renders the interface directly on the GPU, so components with many visual layers, effects, or complex animations cost a lot in performance, since every frame has to recalculate geometry and repaint. Carbon was designed for that kind of scenario, dense, enterprise interfaces with a large volume of data displayed and updated. Its principles prioritize simple, predictable visual states and information density without losing legibility.\nAn internal design system, used as a reference for visual continuity, solved the product constraint. The product’s v2 already had a visual identity recognized by recurring users, port operation teams who use the system daily. Changing the technical stack couldn’t mean changing the visual language overnight, that would break the familiarity already built. The system’s icons come from Carbon’s library, extending that influence to the visual layer as well, not just the structural one.\nThe design decision came from an engineering constraint. The design system work was reconciling both influences without generating visual or behavioral inconsistency."
               },
               {
                 title: "Three-layer architecture",
-                body: "The system was structured in layers, visible throughout the token and component documentation.\n**Foundations:** tokens organized into two layers, semantic and primitive. A token like content/primary references a primitive value like color/neutral/light/1200, with native variation for light and dark mode. The same pattern applies to spacing, semantic tokens (padding/m, gap/l) point to a numeric scale of primitives (space/16, space/24). This separation lets the development team consume only semantic names in code, without dealing with raw values. Border radius follows a full scale, with a separate token, radius/surface, dedicated to surfaces. The grid is responsive per platform, with its own columns, gutter, and margin values by context of use (desktop or mobile/web).\nOne point that reinforces the technical decision behind the system: there is no shadow-based elevation scale, the kind Material Design uses with multiple depth levels. Shadow is limited to one specific functional use, floating menus, because in GPUI, widespread shadows and blur effects represent a meaningful processing cost.\n**Base components:** reusable elements decoupled from any specific product context, like button, badge, tooltip, and modal (split into smaller parts like modal-header, modal-footer, modal-overlay). Each component has its own documentation, with a variant grid crossing style, status, and size, and a Playground section to test compositions live inside Figma itself.\n**Product compositions:** screens and blocks assembled from the base components, already solving use cases from the port security domain, like registration modals, access configuration modals, and access profile cards. At this layer the system stops being generic and starts serving the software's real flows."
+                body: "The system was structured in layers, visible throughout the token and component documentation.\n**Foundations:** tokens organized into two layers, semantic and primitive. A token like content/primary references a primitive value like color/neutral/light/1200, with native variation for light and dark mode. The same pattern applies to spacing, semantic tokens (padding/m, gap/l) point to a numeric scale of primitives (space/16, space/24). This separation lets the development team consume only semantic names in code, without dealing with raw values. Border radius follows a full scale, with a separate token, radius/surface, dedicated to surfaces. The grid is responsive per platform, with its own columns, gutter, and margin values by context of use (desktop or mobile/web).\nOne point that reinforces the technical decision behind the system: there is no shadow-based elevation scale, the kind Material Design uses with multiple depth levels. Shadow is limited to one specific functional use, floating menus, because in GPUI, widespread shadows and blur effects represent a meaningful processing cost.\n**Base components:** reusable elements decoupled from any specific product context, like button, badge, tooltip, and modal (split into smaller parts like modal-header, modal-footer, modal-overlay). Each component has its own documentation, with a variant grid crossing style, status, and size, and a Playground section to test compositions live inside Figma itself.\n**Product compositions:** screens and blocks assembled from the base components, already solving use cases from the port security domain, like registration modals, access configuration modals, and access profile cards. At this layer the system stops being generic and starts serving the software’s real flows."
               },
               {
                 title: "Deep dive: side panel, slots, and toolbar",
-                body: "The system's biggest differentiator isn't in any single component, it's in the combination of the side panel and the slot component.\nThe side panel exists as a single structure that repeats across at least five different contexts in the product: fiscal analysis, AI analysis, AI images, activity, and inspection. Instead of designing a distinct side panel for each flow, the system keeps a common shell and swaps the internal content depending on the context.\nThat content swap is solved by the slot component, documented with a clear purpose: balancing customization and consistency. Any custom content or component inserted into a slot needs to maintain the design system's integrity and follow accessibility and usability standards, even while being variable. In practice, a fiscal analyst and an AI analyst use the same navigation structure and the same interaction logic, only the internal content changes, which reduces the learning curve between product modules.\nThe toolbar reinforces this same reuse principle from a different angle: there's a generic version of the component and a specialized version for the data table, with a toolbar item specific to batch actions. The component went through several recorded iterations (3.0, 3.1), which shows the base structure needed to be tested and adjusted until it adapted well to different use contexts, without turning into a new component every time."
+                body: "The system’s biggest differentiator isn’t in any single component, it’s in the combination of the side panel and the slot component.\nThe side panel exists as a single structure that repeats across at least five different contexts in the product: fiscal analysis, AI analysis, AI images, activity, and inspection. Instead of designing a distinct side panel for each flow, the system keeps a common shell and swaps the internal content depending on the context.\nThat content swap is solved by the slot component, documented with a clear purpose: balancing customization and consistency. Any custom content or component inserted into a slot needs to maintain the design system’s integrity and follow accessibility and usability standards, even while being variable. In practice, a fiscal analyst and an AI analyst use the same navigation structure and the same interaction logic, only the internal content changes, which reduces the learning curve between product modules.\nThe toolbar reinforces this same reuse principle from a different angle: there’s a generic version of the component and a specialized version for the data table, with a toolbar item specific to batch actions. The component went through several recorded iterations (3.0, 3.1), which shows the base structure needed to be tested and adjusted until it adapted well to different use contexts, without turning into a new component every time."
               },
               {
                 title: "Result",
-                body: "The token and variant documentation reduced one-off visual decisions made without a fixed criteria when creating new screens and became the reference the team consulted when specifying new flows. The documentation's clarity was validated in a very direct way: developers used Codex and Claude to reproduce the specified components straight in code, from the token and variant documentation, without needing manual piece-by-piece handoff."
+                body: "The token and variant documentation reduced one-off visual decisions made without a fixed criteria when creating new screens and became the reference the team consulted when specifying new flows. The documentation’s clarity was validated in a very direct way: developers used Codex and Claude to reproduce the specified components straight in code, from the token and variant documentation, without needing manual piece-by-piece handoff."
               }
             ],
             backToProjects: "Back to projects",
@@ -297,8 +297,8 @@ export const translations = {
       ]
     },
     contact: {
-      title: "LET'S\nTALK.",
-      subtitle: "Whether it's a project, a partnership, or just a conversation — reach out."
+      title: "Let’s\ntalk.",
+      subtitle: "Whether it’s a project, a partnership, or just a conversation, reach out."
     }
   }
 };

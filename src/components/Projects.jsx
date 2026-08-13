@@ -59,7 +59,7 @@ export default function Projects({ t, lang }) {
             <span className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
               02 / {lang === 'pt' ? 'Projetos' : 'Projects'}
             </span>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.85] whitespace-pre-line">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[-0.04em] leading-[0.85] whitespace-pre-line">
               {t.projects.title}
             </h2>
           </div>
@@ -179,7 +179,7 @@ export default function Projects({ t, lang }) {
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             exit={{ opacity: 0, scale: 0.92, rotate: 1 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed top-0 left-0 pointer-events-none z-50 w-56 lg:w-72 aspect-[4/3] overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.28)]"
+            className="fixed top-0 left-0 pointer-events-none z-50 w-56 lg:w-72 aspect-[4/3] overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.28)] outline outline-1 -outline-offset-1 outline-[oklch(0_0_0/0.1)] dark:outline-[oklch(1_0_0/0.1)]"
           >
             <img
               src={hoveredProject.imageHover || hoveredProject.image}
@@ -229,7 +229,7 @@ function MobileCard({ project, index, onClick }) {
         <span>{String(index + 1).padStart(2, '0')}</span>
         <span>↗</span>
       </div>
-      <div className="relative overflow-hidden aspect-[4/3] mb-4 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800">
+      <div className="relative overflow-hidden aspect-[4/3] mb-4 bg-zinc-100 dark:bg-zinc-900 outline outline-1 -outline-offset-1 outline-[oklch(0_0_0/0.1)] dark:outline-[oklch(1_0_0/0.1)]">
         <img
           src={project.imageHover || project.image}
           alt={project.title}
@@ -300,7 +300,7 @@ function ProjectModal({ project, onClose, lang }) {
           <button
             ref={closeRef}
             onClick={onClose}
-            className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center border-l border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 transition-colors active:scale-[0.96] transition-transform"
+            className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center border-l border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 active:scale-[0.96] transition-[color,background-color,transform]"
             aria-label={lang === 'pt' ? 'Fechar' : 'Close'}
           >
             <span className="text-xl leading-none">×</span>

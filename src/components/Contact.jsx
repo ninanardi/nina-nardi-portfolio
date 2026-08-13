@@ -47,7 +47,7 @@ export default function Contact({ t, lang }) {
             <motion.span variants={item} className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
               04 / {lang === 'pt' ? 'Contato' : 'Contact'}
             </motion.span>
-            <motion.h2 variants={item} className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.85] mb-10 whitespace-pre-line">
+            <motion.h2 variants={item} className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[-0.04em] leading-[0.85] mb-10 whitespace-pre-line">
               {t.contact.title}
             </motion.h2>
             <motion.p variants={item} className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 mb-10 max-w-xl font-light text-pretty">
@@ -80,7 +80,7 @@ export default function Contact({ t, lang }) {
                   href={l.href}
                   target={l.href.startsWith('http') ? '_blank' : undefined}
                   rel="noreferrer"
-                  className="group relative border-b border-zinc-200 dark:border-zinc-800 py-6 grid grid-cols-[1fr_auto] items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 transition-colors px-2 md:px-4 -mx-2 md:-mx-4 active:scale-[0.98] transition-transform"
+                  className="group relative border-b border-zinc-200 dark:border-zinc-800 py-6 grid grid-cols-[1fr_auto] items-center gap-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/40 px-2 md:px-4 -mx-2 md:-mx-4 active:scale-[0.98] transition-[color,background-color,transform]"
                 >
                   <span className="text-lg md:text-xl font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
                     {l.value}

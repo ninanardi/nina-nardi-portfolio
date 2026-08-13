@@ -39,7 +39,7 @@ export default function About({ t, lang }) {
           <span className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
             03 / {lang === 'pt' ? 'Sobre' : 'About'}
           </span>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.04em] leading-[0.85]">
+          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[-0.04em] leading-[0.85]">
             {t.about.title}
           </h2>
         </motion.div>
@@ -72,7 +72,7 @@ export default function About({ t, lang }) {
                   <p className="text-xs font-mono uppercase tracking-[0.05em] text-zinc-700 dark:text-zinc-300 mb-4">
                     {exp.company}
                   </p>
-                  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed font-light max-w-2xl text-pretty">
+                  <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl text-pretty">
                     {exp.description}
                   </p>
                 </div>
@@ -122,7 +122,7 @@ function ToolCard({ tool, hoveredTool, onHover, onLeave }) {
     <div
       onMouseEnter={() => onHover(tool.name)}
       onMouseLeave={onLeave}
-      className="relative bg-white dark:bg-[#09090b] aspect-square flex flex-col items-center justify-center p-4 cursor-pointer overflow-hidden active:scale-[0.97] transition-transform"
+      className="relative bg-white dark:bg-[#09090b] aspect-square flex flex-col items-center justify-center p-4 cursor-pointer overflow-hidden active:scale-[0.96] transition-transform"
     >
       {/* Slide-up fill */}
       <div
@@ -155,7 +155,7 @@ function ToolCard({ tool, hoveredTool, onHover, onLeave }) {
           </span>
         </div>
         <div
-          className={`mt-3 text-[13px] font-medium tracking-tight transition-colors duration-300 ${
+          className={`mt-3 text-sm font-medium tracking-tight transition-colors duration-300 ${
             isHovered
               ? 'text-white dark:text-zinc-900'
               : 'text-zinc-900 dark:text-zinc-100'

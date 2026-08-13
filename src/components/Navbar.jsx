@@ -94,7 +94,7 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
                 aria-current={active === item.id ? 'true' : undefined}
-                className={`relative flex items-center gap-2 px-5 border-l border-zinc-200 dark:border-zinc-800 font-mono uppercase tracking-[0.05em] text-sm transition-colors active:scale-[0.96] transition-transform ${
+                className={`relative flex items-center gap-2 px-5 border-l border-zinc-200 dark:border-zinc-800 font-mono uppercase tracking-[0.05em] text-sm active:scale-[0.96] transition-[color,background-color,transform] ${
                   active === item.id
                     ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
                     : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100'
@@ -107,14 +107,14 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
             <button
               onClick={() => setLang(lang === 'pt' ? 'en' : 'pt')}
               aria-label={lang === 'pt' ? 'Switch to English' : 'Mudar para Português'}
-              className="px-5 border-l border-zinc-200 dark:border-zinc-800 font-mono uppercase tracking-[0.05em] text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors active:scale-[0.96] transition-transform"
+              className="px-5 border-l border-zinc-200 dark:border-zinc-800 font-mono uppercase tracking-[0.05em] text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 active:scale-[0.96] transition-[color,background-color,transform]"
             >
               {lang === 'pt' ? 'EN' : 'PT'}
             </button>
             <button
               onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
               aria-label="Toggle theme"
-              className="px-5 border-l border-zinc-200 dark:border-zinc-800 font-mono text-sm text-zinc-900 dark:text-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 transition-colors active:scale-[0.96] transition-transform"
+              className="px-5 border-l border-zinc-200 dark:border-zinc-800 font-mono text-sm text-zinc-900 dark:text-zinc-100 hover:bg-zinc-900 hover:text-white dark:hover:bg-zinc-100 dark:hover:text-zinc-900 active:scale-[0.96] transition-[color,background-color,transform]"
             >
               <ThemeIcon theme={theme} />
             </button>

@@ -33,7 +33,7 @@ export default function CaseStudy({ project, t, lang }) {
     <article className="pt-14 md:pt-16">
 
       {/* Breadcrumb / back */}
-      <div className="px-6 md:px-12 border-b border-zinc-200 dark:border-zinc-800">
+      <div className="px-6 md:px-12">
         <div className="max-w-7xl mx-auto py-4 flex items-center justify-between font-mono uppercase tracking-[0.05em] text-xs text-zinc-400">
           <a
             href="#projects"
