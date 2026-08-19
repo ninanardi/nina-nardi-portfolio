@@ -2,17 +2,18 @@ export const translations = {
   pt: {
     nav: { home: "Início", projects: "Projetos", about: "Sobre", contact: "Contato" },
     hero: {
-      description: "Product Designer focada em Sistemas de Design e Interação. Traduzo fluxos complexos em interfaces consistentes e escaláveis. Priorizo clareza funcional e atuo na interseção entre design e tecnologia."
+      headline: "Oi, eu sou a Nina, uma **Product Designer** de **Porto Alegre** que transforma **sistemas complexos** em interfaces **claras** e escaláveis.",
+      tags: ["Design Systems", "Interação", "Produtos B2B", "QA", "IA aplicada a produto"]
     },
     about: {
       title: "Sobre mim",
-      description: "Product Designer focada em Sistemas de Design e Interação. Atuo na tradução de fluxos complexos em interfaces consistentes e escaláveis, priorizando clareza funcional em ecossistemas de produto. Trabalho na interseção entre design e tecnologia, com familiaridade em desenvolvimento frontend, QA e IA aplicada à construção de produtos.",
+      description: "Product Designer focada em Sistemas de Design e Interação. Atuo na tradução de fluxos complexos em interfaces consistentes e escaláveis, priorizando clareza funcional em ecossistemas de produto. Atuo próxima do desenvolvimento frontend e de QA, e uso IA como ferramenta no dia a dia da construção de produto.",
       experience: [
         {
           year: "JAN 2025 — presente",
           role: "Product Designer",
           company: "Preto no Branco",
-          description: "Soluções B2B para clientes como VMI Security, Honda, DGT e Digicon, colaborando com times de backend e frontend desde o início. Co-idealizei o grupo de estudos de design da empresa com o IDEAR – PUCRS, onde também facilito workshops."
+          description: "Soluções B2B para clientes como VMI Security, Honda, DGT e Digicon, colaborando com times de backend e frontend desde o início. Acompanho a entrega até o fim: testo e valido as implementações e faço a revisão da UI construída contra o design. Co-idealizei o grupo de estudos de design da empresa com o IDEAR – PUCRS, onde também facilito workshops."
         },
         {
           year: "ABR 2024 — AGO 2024",
@@ -153,17 +154,18 @@ export const translations = {
   en: {
     nav: { home: "Home", projects: "Work", about: "About", contact: "Contact" },
     hero: {
-      description: "Product Designer focused on Design Systems and Interaction. I translate complex flows into consistent, scalable interfaces. I prioritize functional clarity and work at the intersection of design and technology."
+      headline: "Hi, I'm Nina, a **Product Designer** based in **Porto Alegre** who turns **complex systems** into **clear**, scalable interfaces.",
+      tags: ["Design Systems", "Interaction", "B2B Products", "QA", "AI applied to product"]
     },
     about: {
       title: "About me",
-      description: "Product Designer focused on Design Systems and Interaction. I translate complex flows into consistent, scalable interfaces, prioritizing functional clarity in product ecosystems. I work at the intersection of design and technology, with familiarity in frontend development, QA, and the use of AI applied to product building.",
+      description: "Product Designer focused on Design Systems and Interaction. I translate complex flows into consistent, scalable interfaces, prioritizing functional clarity in product ecosystems. I work close to frontend development and QA, and use AI as a day-to-day tool in product building.",
       experience: [
         {
           year: "JAN 2025 — Present",
           role: "Product Designer",
           company: "Preto no Branco",
-          description: "B2B solutions for clients such as VMI Security, Honda, DGT and Digicon, collaborating with backend and frontend engineers from day one. Co-conceptualized our internal design study group in partnership with IDEAR – PUCRS, where I also facilitate workshops."
+          description: "B2B solutions for clients such as VMI Security, Honda, DGT and Digicon, collaborating with backend and frontend engineers from day one. I follow delivery through to the end: testing and validating implementations and reviewing the built UI against the design. Co-conceptualized our internal design study group in partnership with IDEAR – PUCRS, where I also facilitate workshops."
         },
         {
           year: "APR 2024 — AUG 2024",

@@ -2,15 +2,34 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { smoothScrollToId } from '../utils/smoothScroll';
 
+/* Splits "text with **keywords**" into word tokens, flagging emphasized ones. */
+function tokenize(headline) {
+  return headline.split(/(\*\*[^*]+\*\*)/g).filter(Boolean).flatMap((chunk) => {
+    const key = chunk.startsWith('**') && chunk.endsWith('**');
+    const text = key ? chunk.slice(2, -2) : chunk;
+    return text.split(/\s+/).filter(Boolean).map((word) => ({ word, key }));
+  });
+}
+
 export default function Hero({ t, lang }) {
   const container = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.15 } }
+    show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
   };
   const item = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } }
+    show: { opacity: 1, y: 0, transition: { duration: 1.15, ease: [0.22, 1, 0.36, 1] } }
   };
+  const words = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.06, delayChildren: 0.25 } }
+  };
+  const word = {
+    hidden: { opacity: 0, y: '0.3em', filter: 'blur(8px)' },
+    show: { opacity: 1, y: '0em', filter: 'blur(0px)', transition: { duration: 1.4, ease: [0.22, 1, 0.36, 1] } }
+  };
+
+  const tokens = tokenize(t.hero.headline);
 
   return (
     <section id="home" className="relative min-h-[calc(100svh-56px)] md:min-h-[calc(100svh-64px)] mt-14 md:mt-16 flex flex-col justify-center px-6 md:px-12 py-16 md:py-24 overflow-hidden">
@@ -20,34 +39,36 @@ export default function Hero({ t, lang }) {
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <motion.div variants={container} initial="hidden" animate="show">
-          {/* Eyebrow */}
-          <motion.div
-            variants={item}
-            className="flex items-baseline justify-between gap-4 mb-6 md:mb-8 font-mono uppercase tracking-[0.05em] text-xs md:text-sm"
-          >
-            <span className="text-zinc-900 dark:text-zinc-100">Product Designer</span>
-            <span className="text-zinc-400">Porto Alegre, BR</span>
-          </motion.div>
-
-          {/* Title */}
+          {/* Statement */}
           <motion.h1
-            variants={item}
-            className="text-[22vw] md:text-[18vw] lg:text-[16rem] font-black leading-[0.8] tracking-[-0.04em] text-zinc-900 dark:text-zinc-50 mb-10 md:mb-14 -ml-[0.03em]"
+            variants={words}
+            className="text-[7.5vw] md:text-[5vw] lg:text-[4.25rem] xl:text-[4.75rem] font-medium leading-[1.1] tracking-[-0.025em] mb-10 md:mb-14 max-w-[22ch] text-pretty"
           >
-            <span className="block">NINA</span>
-            <span className="block">NARDI</span>
+            <span className="sr-only">{t.hero.headline.replace(/\*\*/g, '')}</span>
+            <span aria-hidden="true">
+              {tokens.map((token, i) => (
+                <motion.span
+                  key={`${token.word}-${i}`}
+                  variants={word}
+                  className={`inline-block mr-[0.25em] ${
+                    token.key
+                      ? 'text-zinc-900 dark:text-zinc-50'
+                      : 'text-zinc-400 dark:text-zinc-500'
+                  }`}
+                >
+                  {token.word}
+                </motion.span>
+              ))}
+            </span>
           </motion.h1>
 
-          {/* Description + CTAs */}
+          {/* CTAs + tags */}
           <motion.div
             variants={item}
             className="border-t border-zinc-200 dark:border-zinc-800 pt-8 md:pt-10 grid md:grid-cols-12 gap-8"
           >
-            <div className="md:col-span-6 lg:col-span-5">
-              <p className="text-base md:text-lg leading-relaxed text-zinc-700 dark:text-zinc-300 md:font-light text-pretty">
-                {t.hero.description}
-              </p>
-              <div className="mt-8 flex items-center gap-6">
+            <div className="md:col-span-6 lg:col-span-5 self-center">
+              <div className="flex items-center gap-6">
               <a
                 href="#projects"
                 onClick={(e) => { e.preventDefault(); smoothScrollToId('projects'); }}
@@ -65,6 +86,17 @@ export default function Hero({ t, lang }) {
               </a>
               </div>
             </div>
+
+            <ul className="md:col-span-6 lg:col-start-8 lg:col-span-5 self-center flex flex-wrap gap-2 md:justify-end md:ml-auto md:max-w-[22rem]">
+              {t.hero.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="px-2.5 py-1 border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-300 text-[10px] font-mono uppercase tracking-[0.05em]"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </motion.div>
       </div>
