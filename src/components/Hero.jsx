@@ -4,11 +4,21 @@ import { smoothScrollToId } from '../utils/smoothScroll';
 
 /* Splits "text with **keywords**" into word tokens, flagging emphasized ones. */
 function tokenize(headline) {
-  return headline.split(/(\*\*[^*]+\*\*)/g).filter(Boolean).flatMap((chunk) => {
+  const tokens = headline.split(/(\*\*[^*]+\*\*)/g).filter(Boolean).flatMap((chunk) => {
     const key = chunk.startsWith('**') && chunk.endsWith('**');
     const text = key ? chunk.slice(2, -2) : chunk;
     return text.split(/\s+/).filter(Boolean).map((word) => ({ word, key }));
   });
+  /* Punctuation left stranded by the split rejoins the word it belongs to. */
+  return tokens.reduce((acc, token) => {
+    const prev = acc[acc.length - 1];
+    if (prev && /^[,.;:!?)\]]/.test(token.word)) {
+      prev.word += token.word;
+      return acc;
+    }
+    acc.push({ ...token });
+    return acc;
+  }, []);
 }
 
 export default function Hero({ t, lang }) {
@@ -41,6 +51,7 @@ export default function Hero({ t, lang }) {
         <motion.div variants={container} initial="hidden" animate="show">
           {/* Statement */}
           <motion.h1
+            key={lang}
             variants={words}
             className="text-[7.5vw] md:text-[5vw] lg:text-[4.25rem] xl:text-[4.75rem] font-medium leading-[1.1] tracking-[-0.025em] mb-10 md:mb-14 max-w-[22ch] text-pretty"
           >
@@ -50,7 +61,7 @@ export default function Hero({ t, lang }) {
                 <motion.span
                   key={`${token.word}-${i}`}
                   variants={word}
-                  className={`inline-block mr-[0.25em] ${
+                  className={`inline-block ${
                     token.key
                       ? 'text-zinc-900 dark:text-zinc-50'
                       : 'text-zinc-400 dark:text-zinc-500'
@@ -58,7 +69,7 @@ export default function Hero({ t, lang }) {
                 >
                   {token.word}
                 </motion.span>
-              ))}
+              )).flatMap((el, i) => (i ? [' ', el] : [el]))}
             </span>
           </motion.h1>
 
