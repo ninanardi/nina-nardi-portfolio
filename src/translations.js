@@ -7,7 +7,7 @@ export const translations = {
     },
     about: {
       title: "Sobre mim",
-      description: "Product Designer focada em Sistemas de Design e Interação. Atuo na tradução de fluxos complexos em interfaces consistentes e escaláveis, priorizando clareza funcional em ecossistemas de produto. Atuo próxima do desenvolvimento frontend e de QA, e uso IA como ferramenta no dia a dia da construção de produto.",
+      description: "Product Designer focada em Sistemas de Design e Interação. Atuo na tradução de fluxos complexos em interfaces consistentes e escaláveis, priorizando clareza funcional em ecossistemas de produto. Atuo próxima do desenvolvimento frontend e de QA, e uso IA para gerar variações de layout e escrever código, encurtando o caminho entre a ideia e o protótipo testável.",
       experience: [
         {
           year: "JAN 2025 — presente",
@@ -159,7 +159,7 @@ export const translations = {
     },
     about: {
       title: "About me",
-      description: "Product Designer focused on Design Systems and Interaction. I translate complex flows into consistent, scalable interfaces, prioritizing functional clarity in product ecosystems. I work close to frontend development and QA, and use AI as a day-to-day tool in product building.",
+      description: "Product Designer focused on Design Systems and Interaction. I translate complex flows into consistent, scalable interfaces, prioritizing functional clarity in product ecosystems. I work close to frontend development and QA, and use AI to generate layout variations and write code, shortening the path from idea to testable prototype.",
       experience: [
         {
           year: "JAN 2025 — Present",
