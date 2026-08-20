@@ -39,7 +39,7 @@ export default function About({ t, lang }) {
           <span className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
             03 / {lang === 'pt' ? 'Sobre' : 'About'}
           </span>
-          <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[-0.04em] leading-[0.85]">
+          <h2 className="text-4xl md:text-5xl lg:text-[3.75rem] font-medium uppercase tracking-[-0.01em] leading-[1]">
             {t.about.title}
           </h2>
         </motion.div>

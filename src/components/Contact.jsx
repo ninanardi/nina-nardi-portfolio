@@ -47,7 +47,7 @@ export default function Contact({ t, lang }) {
             <motion.span variants={item} className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
               04 / {lang === 'pt' ? 'Contato' : 'Contact'}
             </motion.span>
-            <motion.h2 variants={item} className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[-0.04em] leading-[0.85] mb-10 whitespace-pre-line">
+            <motion.h2 variants={item} className="text-4xl md:text-5xl lg:text-[3.75rem] font-medium uppercase tracking-[-0.01em] leading-[1] mb-10 whitespace-pre-line">
               {t.contact.title}
             </motion.h2>
             <motion.p variants={item} className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 mb-10 max-w-xl font-light text-pretty">

@@ -59,11 +59,11 @@ export default function Projects({ t, lang }) {
             <span className="block font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 mb-4">
               02 / {lang === 'pt' ? 'Projetos' : 'Projects'}
             </span>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-[-0.04em] leading-[0.85] whitespace-pre-line">
+            <h2 className="text-4xl md:text-5xl lg:text-[3.75rem] font-medium uppercase tracking-[-0.01em] leading-[1] whitespace-pre-line">
               {t.projects.title}
             </h2>
           </div>
-          <p className="text-zinc-500 max-w-xs font-mono uppercase tracking-[0.05em] text-xs leading-relaxed whitespace-pre-line">
+          <p className="text-zinc-500 max-w-xs md:ml-auto md:text-right font-mono uppercase tracking-[0.05em] text-xs leading-relaxed whitespace-pre-line">
             {t.projects.subtitle}
           </p>
         </motion.div>
@@ -110,9 +110,9 @@ export default function Projects({ t, lang }) {
 
                   {/* Title */}
                   <h3
-                    className="font-bold uppercase tracking-[-0.02em] leading-[1.05] text-zinc-900 dark:text-zinc-50 lg:max-w-[55%] lg:basis-[55%] whitespace-pre-line"
+                    className="font-medium tracking-[-0.025em] leading-[1.1] text-zinc-900 dark:text-zinc-50 lg:max-w-[55%] lg:basis-[55%] whitespace-pre-line"
                     style={{
-                      fontSize: 'clamp(1.75rem, 3.2vw, 2.75rem)',
+                      fontSize: 'clamp(2rem, 3.6vw, 3.25rem)',
                       transform: hoveredId === project.id ? 'translateX(6px)' : 'translateX(0)',
                       transition: 'transform 0.5s cubic-bezier(0.22,1,0.36,1)',
                     }}
@@ -240,7 +240,7 @@ function MobileCard({ project, index, onClick }) {
       </div>
       <div className="flex items-start gap-4">
         <div>
-          <h3 className="text-2xl font-bold uppercase tracking-[-0.02em] text-zinc-900 dark:text-zinc-50 mb-3 whitespace-pre-line">
+          <h3 className="text-2xl font-medium tracking-[-0.025em] text-zinc-900 dark:text-zinc-50 mb-3 whitespace-pre-line">
             {project.title}
           </h3>
           <div className="flex flex-col gap-1.5">
@@ -318,7 +318,7 @@ function ProjectModal({ project, onClose, lang }) {
           </div>
 
           <div className="w-full lg:w-[40%] flex-1 lg:flex-none min-h-0 overflow-y-auto custom-scrollbar px-6 md:px-8 pt-6 md:pt-8 pb-8">
-            <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-[-0.02em] leading-[1.1] mb-5">
+            <h3 className="text-2xl md:text-3xl font-medium tracking-[-0.025em] leading-[1.15] mb-5">
               {project.title}
             </h3>
             <div className="flex flex-wrap gap-2 pb-6 mb-6 border-b border-zinc-200 dark:border-zinc-800">

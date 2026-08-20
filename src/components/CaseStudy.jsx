@@ -55,7 +55,7 @@ export default function CaseStudy({ project, t, lang }) {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="text-3xl md:text-5xl lg:text-6xl font-bold uppercase tracking-[-0.04em] leading-[1.05] whitespace-pre-line mb-5 md:mb-6"
+                className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-[-0.03em] leading-[1.1] whitespace-pre-line mb-5 md:mb-6"
               >
                 {project.title}
               </motion.h1>
@@ -146,7 +146,7 @@ export default function CaseStudy({ project, t, lang }) {
                   <span className="font-mono text-3xl md:text-4xl font-medium tabular-nums text-transparent leading-none [-webkit-text-stroke:1px_#a1a1aa] dark:[-webkit-text-stroke:1px_#52525b]">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <h2 className="text-xl md:text-2xl font-bold uppercase tracking-[-0.02em] leading-[1.1]">
+                  <h2 className="text-xl md:text-2xl font-medium tracking-[-0.025em] leading-[1.15]">
                     {section.title}
                   </h2>
                 </div>
@@ -253,7 +253,7 @@ export default function CaseStudy({ project, t, lang }) {
             {cs.nextLabel}
           </span>
           <span className="flex items-center justify-between gap-6">
-            <span className="text-3xl md:text-5xl font-bold uppercase tracking-[-0.03em] leading-[1.02] whitespace-pre-line group-hover:translate-x-1.5 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]">
+            <span className="text-3xl md:text-5xl font-medium tracking-[-0.03em] leading-[1.05] whitespace-pre-line group-hover:translate-x-1.5 transition-transform duration-500 [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]">
               {next.title}
             </span>
             <span className="shrink-0 text-zinc-300 dark:text-zinc-600 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors duration-300">

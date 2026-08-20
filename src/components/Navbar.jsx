@@ -49,10 +49,10 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
   }, []);
 
   const items = [
-    { name: t.nav.home, href: '#home', id: 'home', index: '01' },
-    { name: t.nav.projects, href: '#projects', id: 'projects', index: '02' },
-    { name: t.nav.about, href: '#about', id: 'about', index: '03' },
-    { name: t.nav.contact, href: '#contact', id: 'contact', index: '04' },
+    { name: t.nav.home, href: '#home', id: 'home' },
+    { name: t.nav.projects, href: '#projects', id: 'projects' },
+    { name: t.nav.about, href: '#about', id: 'about' },
+    { name: t.nav.contact, href: '#contact', id: 'contact' },
   ];
 
   const handleNavClick = (e, href) => {
@@ -94,13 +94,12 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
                 aria-current={active === item.id ? 'true' : undefined}
-                className={`relative flex items-center gap-2 px-5 border-l border-zinc-200 dark:border-zinc-800 font-mono uppercase tracking-[0.05em] text-sm active:scale-[0.96] transition-[color,background-color,transform] ${
+                className={`relative flex items-center px-5 border-l border-zinc-200 dark:border-zinc-800 font-mono uppercase tracking-[0.05em] text-sm active:scale-[0.96] transition-[color,background-color,transform] ${
                   active === item.id
                     ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
                     : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100'
                 }`}
               >
-                <span className="text-[9px] opacity-50">{item.index}</span>
                 {item.name}
               </a>
             ))}
@@ -164,7 +163,6 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
                 className="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 last:border-0 flex items-center justify-between font-mono uppercase tracking-[0.05em] text-sm active:scale-[0.96] transition-transform"
               >
                 <span className="flex items-center gap-3">
-                  <span className="text-[10px] text-zinc-400">{item.index}</span>
                   {item.name}
                 </span>
                 <span className="text-zinc-400">→</span>

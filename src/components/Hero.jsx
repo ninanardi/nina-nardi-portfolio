@@ -21,6 +21,21 @@ function tokenize(headline) {
   }, []);
 }
 
+/* Short connectors (de, em, a, and, of...) must not end a line: the space that
+   follows them becomes non-breaking. Never two in a row, so we don't glue a
+   whole phrase into one unbreakable block. */
+function separators(tokens) {
+  const seps = [];
+  let previousWasTied = false;
+  tokens.forEach((token, i) => {
+    if (i === tokens.length - 1) return;
+    const tie = !previousWasTied && token.word.length <= 3 && !/[,.;:!?)\]]$/.test(token.word);
+    seps[i] = tie ? '\u00A0' : ' ';
+    previousWasTied = tie;
+  });
+  return seps;
+}
+
 export default function Hero({ t, lang }) {
   const container = {
     hidden: { opacity: 0 },
@@ -40,9 +55,10 @@ export default function Hero({ t, lang }) {
   };
 
   const tokens = tokenize(t.hero.headline);
+  const seps = separators(tokens);
 
   return (
-    <section id="home" className="relative min-h-[calc(100svh-56px)] md:min-h-[calc(100svh-64px)] mt-14 md:mt-16 flex flex-col justify-center px-6 md:px-12 py-16 md:py-24 overflow-hidden">
+    <section id="home" className="relative min-h-[calc(100svh-56px)] md:min-h-[calc(100svh-64px)] mt-14 md:mt-16 flex flex-col justify-center px-6 md:px-12 py-10 md:py-14 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 noise-texture opacity-[0.035]" />
       </div>
@@ -53,7 +69,7 @@ export default function Hero({ t, lang }) {
           <motion.h1
             key={lang}
             variants={words}
-            className="text-[7.5vw] md:text-[5vw] lg:text-[4.25rem] xl:text-[4.75rem] font-medium leading-[1.1] tracking-[-0.025em] mb-10 md:mb-14 max-w-[22ch] text-pretty"
+            className="text-[7vw] md:text-[4.75vw] lg:text-[4.5rem] xl:text-[5rem] font-medium leading-[1.1] tracking-[-0.025em] mb-8 md:mb-10 max-w-[22ch] text-pretty"
           >
             <span className="sr-only">{t.hero.headline.replace(/\*\*/g, '')}</span>
             <span aria-hidden="true">
@@ -69,7 +85,7 @@ export default function Hero({ t, lang }) {
                 >
                   {token.word}
                 </motion.span>
-              )).flatMap((el, i) => (i ? [' ', el] : [el]))}
+              )).flatMap((el, i) => (i ? [seps[i - 1], el] : [el]))}
             </span>
           </motion.h1>
 

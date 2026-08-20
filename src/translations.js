@@ -3,7 +3,7 @@ export const translations = {
     nav: { home: "Início", projects: "Projetos", about: "Sobre", contact: "Contato" },
     hero: {
       headline: "Oi, eu sou a **Nina**, uma **Product Designer** de **Porto Alegre** que transforma **sistemas complexos** em interfaces **claras** e escaláveis.",
-      tags: ["Design Systems", "Interação", "Produtos B2B", "QA", "IA aplicada a produto"]
+      tags: ["Design System", "Interação", "Produtos B2B", "QA", "IA aplicada a produto"]
     },
     about: {
       title: "Sobre mim",
@@ -155,7 +155,7 @@ export const translations = {
     nav: { home: "Home", projects: "Work", about: "About", contact: "Contact" },
     hero: {
       headline: "Hi, I'm **Nina**, a **Product Designer** based in **Porto Alegre** who turns **complex systems** into **clear**, scalable interfaces.",
-      tags: ["Design Systems", "Interaction", "B2B Products", "QA", "AI applied to product"]
+      tags: ["Design System", "Interaction", "B2B Products", "QA", "AI applied to product"]
     },
     about: {
       title: "About me",
