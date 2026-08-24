@@ -21,19 +21,32 @@ function tokenize(headline) {
   }, []);
 }
 
-/* Short connectors (de, em, a, and, of...) must not end a line: the space that
-   follows them becomes non-breaking. Never two in a row, so we don't glue a
-   whole phrase into one unbreakable block. */
-function separators(tokens) {
-  const seps = [];
+/* Relative pronouns read as part of the clause before them, so they stay on the
+   line they close instead of opening the next one. */
+const BACK_TIE = new Set(['que', 'who', 'that']);
+
+/* Short connectors (de, em, a, and, of...) must not end a line, so each one is
+   grouped with the word that follows it and the group is rendered nowrap.
+   Never two ties in a row, so we don't glue a whole phrase into one block. */
+function groupTokens(tokens) {
+  const groups = [];
   let previousWasTied = false;
   tokens.forEach((token, i) => {
-    if (i === tokens.length - 1) return;
-    const tie = !previousWasTied && token.word.length <= 3 && !/[,.;:!?)\]]$/.test(token.word);
-    seps[i] = tie ? '\u00A0' : ' ';
+    if (groups.length && BACK_TIE.has(token.word.toLowerCase())) {
+      groups[groups.length - 1].push(token);
+      previousWasTied = false;
+      return;
+    }
+    const tie =
+      i < tokens.length - 1 &&
+      !previousWasTied &&
+      token.word.length <= 3 &&
+      !/[,.;:!?)\]]$/.test(token.word);
+    if (previousWasTied) groups[groups.length - 1].push(token);
+    else groups.push([token]);
     previousWasTied = tie;
   });
-  return seps;
+  return groups;
 }
 
 export default function Hero({ t, lang }) {
@@ -55,7 +68,7 @@ export default function Hero({ t, lang }) {
   };
 
   const tokens = tokenize(t.hero.headline);
-  const seps = separators(tokens);
+  const groups = groupTokens(tokens);
 
   return (
     <section id="home" className="relative min-h-[calc(100svh-56px)] md:min-h-[calc(100svh-64px)] mt-14 md:mt-16 flex flex-col justify-center px-6 md:px-12 py-10 md:py-14 overflow-hidden">
@@ -73,19 +86,28 @@ export default function Hero({ t, lang }) {
           >
             <span className="sr-only">{t.hero.headline.replace(/\*\*/g, '')}</span>
             <span aria-hidden="true">
-              {tokens.map((token, i) => (
-                <motion.span
-                  key={`${token.word}-${i}`}
-                  variants={word}
-                  className={`inline-block ${
-                    token.key
-                      ? 'text-zinc-900 dark:text-zinc-50'
-                      : 'text-zinc-400 dark:text-zinc-500'
-                  }`}
-                >
-                  {token.word}
-                </motion.span>
-              )).flatMap((el, i) => (i ? [seps[i - 1], el] : [el]))}
+              {groups.map((group, gi) => (
+                <React.Fragment key={`g-${gi}`}>
+                  {gi > 0 && ' '}
+                  <span className="whitespace-nowrap">
+                    {group.map((token, i) => (
+                      <React.Fragment key={`${token.word}-${i}`}>
+                        {i > 0 && ' '}
+                        <motion.span
+                          variants={word}
+                          className={`inline-block ${
+                            token.key
+                              ? 'text-zinc-900 dark:text-zinc-50'
+                              : 'text-zinc-400 dark:text-zinc-500'
+                          }`}
+                        >
+                          {token.word}
+                        </motion.span>
+                      </React.Fragment>
+                    ))}
+                  </span>
+                </React.Fragment>
+              ))}
             </span>
           </motion.h1>
 
