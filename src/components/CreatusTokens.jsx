@@ -2,7 +2,7 @@ import React from 'react';
 import Icon, { domainIconNames } from './CreatusIcons';
 
 const card =
-  'bg-zinc-50 dark:bg-[#16191d] border border-zinc-200 dark:border-[#24282e] p-7 md:p-9';
+  'bg-zinc-50 dark:bg-[#16191d] border border-zinc-200 dark:border-[#24282e] p-5 sm:p-7 md:p-9';
 const mono = 'font-mono';
 
 const colorGroups = [
@@ -144,12 +144,12 @@ export default function CreatusTokens({ lang }) {
 
       {/* Color tokens */}
       <div className={card}>
-        <div className="flex items-start justify-between gap-10 mb-2">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-10 mb-2">
           <SectionHeader
             title={c.colorTitle}
             desc={c.colorDesc}
           />
-          <div className="flex gap-5 font-mono text-[11px] leading-none text-zinc-500 dark:text-zinc-400 shrink-0 pt-1">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 font-mono text-[11px] leading-none text-zinc-500 dark:text-zinc-400 md:shrink-0 md:pt-1 mb-8 md:mb-0">
             <div className="flex items-center gap-1.5">
               <span className="w-[11px] h-[11px] shrink-0 bg-white border border-zinc-400 dark:border-zinc-600" />
               <span>{c.light}</span>
@@ -177,9 +177,9 @@ export default function CreatusTokens({ lang }) {
                     <span className="w-[15px] h-[15px] border border-zinc-300 dark:border-[#3a4148]" style={{ background: r.b }} />
                     <span className="w-[15px] h-[15px] border border-zinc-300 dark:border-[#3a4148]" style={{ background: r.c }} />
                   </div>
-                  <div className="font-mono text-[12.5px] text-zinc-700 dark:text-zinc-200">{r.token}</div>
+                  <div className="font-mono text-[12.5px] text-zinc-700 dark:text-zinc-200 min-w-0 break-all">{r.token}</div>
                   <div className="flex-1" />
-                  <div className="font-mono text-[11px] text-zinc-400 dark:text-zinc-500 whitespace-nowrap">{r.ref}</div>
+                  <div className="font-mono text-[11px] text-zinc-400 dark:text-zinc-500 whitespace-nowrap shrink-0">{r.ref}</div>
                 </div>
               ))}
             </div>
@@ -202,7 +202,7 @@ export default function CreatusTokens({ lang }) {
               </div>
             ))}
           </div>
-          <div className="grid grid-cols-2 gap-x-7 gap-y-2 mt-10 pt-6 border-t border-zinc-200 dark:border-[#2c3238]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-7 gap-y-2 mt-10 pt-6 border-t border-zinc-200 dark:border-[#2c3238]">
             {spacingTokens.map((t) => (
               <div key={t.token} className="flex justify-between gap-4">
                 <span className="font-mono text-[12.5px] text-zinc-700 dark:text-zinc-200">{t.token}</span>
@@ -218,7 +218,7 @@ export default function CreatusTokens({ lang }) {
             desc={c.radiusDesc}
           />
           <div className="flex-1 flex items-center">
-            <div className="grid grid-cols-6 gap-3 w-full">
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 w-full">
               {radiusScale.map((r) => (
                 <div key={r.n} className="flex flex-col items-center gap-2">
                   <span
@@ -230,7 +230,7 @@ export default function CreatusTokens({ lang }) {
               ))}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-x-7 gap-y-2 mt-10 pt-6 border-t border-zinc-200 dark:border-[#2c3238]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-7 gap-y-2 mt-10 pt-6 border-t border-zinc-200 dark:border-[#2c3238]">
             {radiusTokens.map((t) => (
               <div key={t.token} className="flex justify-between gap-4">
                 <span className={`font-mono text-[12.5px] ${t.brand ? 'text-[#00a862]' : 'text-zinc-700 dark:text-zinc-200'}`}>{t.token}</span>
@@ -315,12 +315,12 @@ export default function CreatusTokens({ lang }) {
 
       {/* Iconography */}
       <div className={card}>
-        <div className="flex items-start justify-between gap-10 mb-8">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 md:gap-10 mb-8">
           <SectionHeader
             title={c.iconTitle}
             desc={c.iconDesc}
           />
-          <div className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-[#2c3238] rounded px-2.5 py-1 shrink-0">
+          <div className="font-mono text-[11px] text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-[#2c3238] rounded px-2.5 py-1 self-start shrink-0">
             {c.iconCount}
           </div>
         </div>
