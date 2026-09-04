@@ -27,7 +27,9 @@ const BACK_TIE = new Set(['que', 'who', 'that']);
 
 /* Short connectors (de, em, a, and, of...) must not end a line, so each one is
    grouped with the word that follows it and the group is rendered nowrap.
-   Never two ties in a row, so we don't glue a whole phrase into one block. */
+   Never two ties in a row, so we don't glue a whole phrase into one block.
+   The nowrap only kicks in at lg+: on a narrow column each pair eats most of
+   the line, and forcing it together makes the rag worse than an orphan. */
 function groupTokens(tokens) {
   const groups = [];
   let previousWasTied = false;
@@ -82,14 +84,14 @@ export default function Hero({ t, lang }) {
           <motion.h1
             key={lang}
             variants={words}
-            className="text-[7vw] md:text-[4.75vw] lg:text-[4.5rem] xl:text-[5rem] font-medium leading-[1.1] tracking-[-0.025em] mb-8 md:mb-10 max-w-[22ch] text-pretty"
+            className="text-[clamp(2.5rem,8.2vw,4rem)] lg:text-[4.5rem] xl:text-[5rem] font-medium leading-[1.1] tracking-[-0.025em] mb-8 md:mb-10 max-w-[22ch] text-pretty"
           >
             <span className="sr-only">{t.hero.headline.replace(/\*\*/g, '')}</span>
             <span aria-hidden="true">
               {groups.map((group, gi) => (
                 <React.Fragment key={`g-${gi}`}>
                   {gi > 0 && ' '}
-                  <span className="whitespace-nowrap">
+                  <span className="lg:whitespace-nowrap">
                     {group.map((token, i) => (
                       <React.Fragment key={`${token.word}-${i}`}>
                         {i > 0 && ' '}

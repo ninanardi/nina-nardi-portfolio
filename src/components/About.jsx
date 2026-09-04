@@ -60,7 +60,7 @@ export default function About({ t, lang }) {
               <motion.div
                 key={index}
                 variants={item}
-                className="border-b border-zinc-200 dark:border-zinc-800 py-8 grid md:grid-cols-[160px_1fr_auto] gap-4 md:gap-16 group hover:bg-white dark:hover:bg-zinc-900/40 transition-colors px-2 md:px-4 -mx-2 md:-mx-4"
+                className="exp-row border-b border-zinc-200 dark:border-zinc-800 py-8 grid md:grid-cols-[160px_1fr_auto] gap-4 md:gap-16 group px-2 md:px-4 -mx-2 md:-mx-4"
               >
                 <span className="text-xs font-mono uppercase tracking-[0.05em] text-zinc-500 tabular-nums pt-1 whitespace-nowrap">
                   {exp.year}

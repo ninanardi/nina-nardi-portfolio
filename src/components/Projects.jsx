@@ -104,7 +104,7 @@ export default function Projects({ t, lang }) {
                   }}
                 >
                   {/* Index */}
-                  <span className="shrink-0 font-mono text-4xl lg:text-5xl font-medium tabular-nums text-transparent self-start leading-none [-webkit-text-stroke:1px_#a1a1aa] dark:[-webkit-text-stroke:1px_#52525b]">
+                  <span className="idx-fill shrink-0 font-mono text-4xl lg:text-5xl font-medium tabular-nums self-start leading-none">
                     {String(i + 1).padStart(2, '0')}
                   </span>
 
@@ -236,7 +236,7 @@ function MobileCard({ project, index, onClick }) {
           referrerPolicy="no-referrer"
           className={`w-full h-full object-cover ${objectPosition(project)} transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]`}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/20 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/10 via-transparent to-transparent pointer-events-none" />
       </div>
       <div className="flex items-start gap-4">
         <div>

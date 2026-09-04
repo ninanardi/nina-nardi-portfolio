@@ -32,25 +32,22 @@ export default function CaseStudy({ project, t, lang }) {
   return (
     <article className="pt-14 md:pt-16">
 
-      {/* Breadcrumb / back */}
-      <div className="px-6 md:px-12">
-        <div className="max-w-7xl mx-auto py-4 flex items-center justify-between font-mono uppercase tracking-[0.05em] text-xs text-zinc-400">
-          <a
-            href="#projects"
-            className="flex items-center gap-2 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
-          >
-            <span aria-hidden="true">←</span>
-            {cs.backToProjects}
-          </a>
-          <span>{String(project.id).padStart(2, '0')} / {cs.eyebrow}</span>
-        </div>
-      </div>
-
       {/* Hero */}
       <header className="px-6 md:px-12 pt-14 md:pt-20 pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 mb-10 md:mb-12">
             <div className="lg:col-span-7">
+              <motion.a
+                href="#projects"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                className="group inline-flex items-center gap-2 mb-7 md:mb-9 font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+              >
+                <span aria-hidden="true" className="transition-transform duration-300 group-hover:-translate-x-1">←</span>
+                {cs.backToProjects}
+              </motion.a>
+
               <motion.h1
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -72,16 +69,32 @@ export default function CaseStudy({ project, t, lang }) {
               )}
             </div>
 
-            {/* Disclaimer — aligned with the title */}
+            {/* Nota de contexto ao lado do título. A primeira frase sai em tom
+                mais forte: sem essa quebra o bloco lê como uma massa cinza só. */}
             {cs.disclaimer && (
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.9, delay: 0.2 }}
-                className="lg:col-span-5 lg:mt-2 border-l-2 border-zinc-300 dark:border-zinc-700 pl-4 md:pl-5 text-xs md:text-sm leading-relaxed text-zinc-500 dark:text-zinc-400 font-light self-start"
+                className="lg:col-span-4 lg:col-start-9 self-start"
               >
-                {cs.disclaimer}
-              </motion.p>
+                <p className="font-mono uppercase tracking-[0.05em] text-xs text-zinc-400 pb-3 mb-4 border-b border-zinc-200 dark:border-zinc-800">
+                  {lang === 'pt' ? 'Nota' : 'Note'}
+                </p>
+                {(() => {
+                  const cut = cs.disclaimer.indexOf('. ');
+                  const lead = cut > -1 ? cs.disclaimer.slice(0, cut + 1) : cs.disclaimer;
+                  const rest = cut > -1 ? cs.disclaimer.slice(cut + 2) : '';
+                  return (
+                    <>
+                      <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-200">{lead}</p>
+                      {rest && (
+                        <p className="mt-3 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400 font-light">{rest}</p>
+                      )}
+                    </>
+                  );
+                })()}
+              </motion.div>
             )}
           </div>
 

@@ -85,3 +85,73 @@ html.dark .skip-link { background: #fafafa; color: #18181b; }
     scroll-behavior: auto !important;
   }
 }
+
+/* ---- Transição entre a lista de projetos e a página de case ----
+   Crossfade puro. Sem elemento pareado e sem deslocamento: qualquer coisa
+   que se mova aqui compete com a página que está chegando. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 460ms;
+  animation-timing-function: cubic-bezier(0.33, 0, 0.2, 1);
+}
+::view-transition-old(root) { animation-name: vt-fade-out; }
+::view-transition-new(root) { animation-name: vt-fade-in; }
+
+@keyframes vt-fade-out { to { opacity: 0; } }
+@keyframes vt-fade-in { from { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none !important; }
+}
+
+/* ---- Números que se preenchem de baixo para cima ----
+   O contorno continua o mesmo; o preenchimento sobe por dentro dele. */
+.idx-fill {
+  color: transparent;
+  -webkit-text-stroke: 1px #a1a1aa;
+  background-image: linear-gradient(#18181b, #18181b);
+  background-repeat: no-repeat;
+  background-size: 100% 0%;
+  background-position: 0 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  transition: background-size 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.dark .idx-fill {
+  -webkit-text-stroke-color: #52525b;
+  background-image: linear-gradient(#fafafa, #fafafa);
+}
+.group:hover .idx-fill,
+.group:focus-visible .idx-fill { background-size: 100% 100%; }
+
+/* ---- Fundo da linha de experiência ----
+   O fundo vive num pseudo-elemento para poder sangrar até a borda da tela
+   no mobile sem arrastar a régua divisória junto. isolation cria contexto
+   de empilhamento, então o z-index negativo fica atrás do texto da linha
+   sem cair atrás do fundo da seção. */
+.exp-row { position: relative; isolation: isolate; }
+
+.exp-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: transparent;
+  transition: background-color 200ms ease;
+  pointer-events: none;
+}
+
+/* No mobile estende mais 1rem: a seção tem px-6 (1.5rem) e a linha já
+   puxa 0.5rem com -mx-2, então falta exatamente 1rem para cada lado. */
+@media (max-width: 767px) {
+  .exp-row::before { inset: 0 -1rem; }
+}
+
+.exp-row:hover::before,
+.exp-row:active::before,
+.exp-row:focus-within::before { background: #fff; }
+
+html.dark .exp-row:hover::before,
+html.dark .exp-row:active::before,
+html.dark .exp-row:focus-within::before { background: rgba(24, 24, 27, 0.4); }

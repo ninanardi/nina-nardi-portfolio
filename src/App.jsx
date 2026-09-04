@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { smoothScrollTo } from './utils/smoothScroll';
 
@@ -19,10 +20,38 @@ export default function App() {
   const [route, setRoute] = useState(() => window.location.hash);
 
   useEffect(() => {
-    const onHash = () => setRoute(window.location.hash);
+    const onHash = () => {
+      const next = window.location.hash;
+      // Só a fronteira home <-> case merece transição; âncora dentro da
+      // home continua sendo scroll normal.
+      const crossesCase =
+        route.startsWith('#/case/') !== next.startsWith('#/case/');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!crossesCase || reduced || !document.startViewTransition) {
+        setRoute(next);
+        return;
+      }
+
+      document.startViewTransition(() => {
+        // flushSync porque o browser tira o snapshot novo assim que o
+        // callback retorna — um setState assíncrono chegaria tarde demais.
+        flushSync(() => setRoute(next));
+        // Posiciona o scroll ainda dentro do callback, senão o snapshot
+        // sai na posição antiga e a página "pula" no fim da transição.
+        if (next.startsWith('#/case/')) {
+          window.scrollTo(0, 0);
+        } else {
+          const id = next.replace('#', '');
+          const el = id && !id.startsWith('/') ? document.getElementById(id) : null;
+          if (el) el.scrollIntoView();
+          else window.scrollTo(0, 0);
+        }
+      });
+    };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
-  }, []);
+  }, [route]);
 
   const setLang = (l) => { setLangState(l); localStorage.setItem('nn-lang', l); };
   const setTheme = (t) => { setThemeState(t); localStorage.setItem('nn-theme', t); };
@@ -96,8 +125,12 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
+            /* hover e tap precisam vir do Framer: ele escreve opacity e
+               transform inline, e estilo inline vence as classes hover:/active:. */
+            whileHover={{ opacity: 0.85 }}
+            whileTap={{ scale: 0.96 }}
             onClick={() => smoothScrollTo(0)}
-            className="fixed bottom-6 right-6 z-40 w-12 h-12 bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-lg hover:opacity-85 active:scale-[0.96] transition-[opacity,transform] flex items-center justify-center font-mono uppercase tracking-[0.05em]"
+            className="fixed bottom-6 right-6 z-40 w-12 h-12 bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-lg flex items-center justify-center font-mono uppercase tracking-[0.05em]"
             aria-label="Back to top"
           >
             <span className="text-lg">↑</span>

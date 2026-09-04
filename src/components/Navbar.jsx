@@ -33,6 +33,17 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
   }, []);
 
   useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === 'Escape' && setOpen(false);
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  useEffect(() => {
     const sections = ['home', 'projects', 'about', 'contact']
       .map(id => document.getElementById(id))
       .filter(Boolean);
@@ -150,6 +161,22 @@ export default function Navbar({ lang, setLang, theme, setTheme, t }) {
       <AnimatePresence>
         {open && (
           <motion.div
+            key="scrim"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+            className="md:hidden fixed inset-0 -z-10 backdrop-blur-[3px]"
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key="menu"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
