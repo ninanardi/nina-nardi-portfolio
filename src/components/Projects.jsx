@@ -104,13 +104,13 @@ export default function Projects({ t, lang }) {
                   }}
                 >
                   {/* Index */}
-                  <span className="idx-fill shrink-0 font-mono text-4xl lg:text-5xl font-medium tabular-nums self-start leading-none">
+                  <span className="idx-fill shrink-0 font-mono text-4xl lg:text-5xl font-medium tabular-nums self-start leading-none translate-y-[0.07em]">
                     {String(i + 1).padStart(2, '0')}
                   </span>
 
                   {/* Title */}
                   <h3
-                    className="font-medium tracking-[-0.025em] leading-[1.1] text-zinc-900 dark:text-zinc-50 lg:max-w-[55%] lg:basis-[55%] whitespace-pre-line"
+                    className="self-start font-medium tracking-[-0.025em] leading-[1.1] text-zinc-900 dark:text-zinc-50 lg:max-w-[55%] lg:basis-[55%] whitespace-pre-line"
                     style={{
                       fontSize: 'clamp(2rem, 3.6vw, 3.25rem)',
                       transform: hoveredId === project.id ? 'translateX(6px)' : 'translateX(0)',
